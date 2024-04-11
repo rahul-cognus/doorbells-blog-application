@@ -31,16 +31,32 @@ const Header = () => {
 
 
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="bi bi-pencil me-1"></i>Post</a>
+                                <a className="nav-link dropdown-toggle" href="/blog" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="bi bi-pencil me-1"></i>Blog</a>
                                 <ul className="dropdown-menu" aria-labelledby="postMenu">
 
-                                    <li> <Link className="dropdown-item" href="dashboard-post-list.html">Post List</Link> </li>
-                                    <li> <Link className="dropdown-item" href="dashboard-post-categories.html">Post Categories</Link> </li>
-                                    <li> <Link className="dropdown-item" href="dashboard-post-create.html">Create a Post</Link> </li>
-                                    <li> <Link className="dropdown-item" href="dashboard-post-edit.html">Edit Post</Link> </li>
+                                    <li> <Link className="dropdown-item" href="/blog">Blog List</Link> </li>
+                                    <li> <Link className="dropdown-item" href="/blog/create">Create Blog</Link> </li>
+                                    <li> <Link className="dropdown-item" href="/blog/edit">Edit Blog</Link> </li>
                                 </ul>
                             </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="bi bi-pencil me-1"></i>Category</a>
+                                <ul className="dropdown-menu" aria-labelledby="postMenu">
 
+                                    <li> <Link className="dropdown-item" href="dashboard-post-list.html">Category List</Link> </li>
+                                    <li> <Link className="dropdown-item" href="dashboard-post-create.html">Create Category</Link> </li>
+                                    <li> <Link className="dropdown-item" href="dashboard-post-edit.html">Edit Category</Link> </li>
+                                </ul>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="bi bi-pencil me-1"></i>Author</a>
+                                <ul className="dropdown-menu" aria-labelledby="postMenu">
+
+                                    <li> <Link className="dropdown-item" href="dashboard-post-list.html">Author List</Link> </li>
+                                    <li> <Link className="dropdown-item" href="dashboard-post-create.html">Create Author</Link> </li>
+                                    <li> <Link className="dropdown-item" href="dashboard-post-edit.html">Edit Author</Link> </li>
+                                </ul>
+                            </li>
 
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="bi bi-folder me-1"></i>Pages</a>
