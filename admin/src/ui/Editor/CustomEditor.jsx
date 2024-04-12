@@ -16,6 +16,7 @@ import LinkTool from "@editorjs/link";
 import Raw from "@editorjs/raw";
 import Paragraph from "@editorjs/paragraph";
 import Codebox from "@bomdi/codebox";
+import {gql} from "@apollo/client"
 export default function Editor() {
     const editorRef = useRef(null);
     const [editorData, setEditorData] = useState(null);
