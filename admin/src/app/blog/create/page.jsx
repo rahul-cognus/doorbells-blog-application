@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+
 import dynamic from 'next/dynamic';
-import Swal from 'sweetalert2';
-import { CREATE_ARTICLE } from '@/graphql/mutations';
+
 
 
 let CustomEditor = dynamic(() => import('@/ui/Editor/CustomEditor'), {
@@ -12,70 +11,7 @@ let CustomEditor = dynamic(() => import('@/ui/Editor/CustomEditor'), {
 });
 
 const CreateBlog = () => {
-    const axiosAuth = useAxiosAuth();
-    const [imageArray, setImageArray] = useState([]);
-    const router = useRouter();
-    const [editorInstance, setEditorInstance] = useState({});
 
-    const onCancelButtonClicked = (e) => {
-        router.back();
-    };
-
-    const handleInstance = (instance) => {
-        setEditorInstance(instance);
-    };
-
-    function removeImage(img) {
-        const array = imageArray.filter((image) => image !== img);
-        setImageArray(array);
-    }
-
-    const saveArticle = async (e) => {
-        e.preventDefault();
-
-        const savedData = await editorInstance.save();
-
-        const data = {
-            description: JSON.stringify(savedData),
-        };
-        await clearEditorLeftoverImages();
-
-        // TODO: API CALL TO SAVE EDITORJS DATA
-        const res = await createArticle(axiosAuth, data);
-
-        const dialogRes = await Swal.fire(
-            res.data.message,
-            'You have successfully created an article.',
-            'success',
-        );
-        if (dialogRes) {
-            router.back();
-        }
-    };
-
-    const clearEditorLeftoverImages = async () => {
-        // Get editorJs images
-        const currentImages = [];
-        document
-            .querySelectorAll('.image-tool__image-picture')
-            .forEach((x) => currentImages.push(x.src.includes('/images/') && x.src));
-
-        if (imageArray.length > currentImages.length) {
-            // image deleted
-            for (const img of imageArray) {
-                if (!currentImages.includes(img)) {
-                    try {
-                        // delete image from backend
-                        await deleteImage(axiosAuth, { imagePath: img });
-                        // remove from array
-                        removeImage(img);
-                    } catch (err) {
-                        console.log(err.message);
-                    }
-                }
-            }
-        }
-    };
     return (
         <section className="py-4">
             <div className="container">
@@ -210,10 +146,11 @@ const CreateBlog = () => {
                                                 {/* Main toolbar */}
                                                 {/* <div className="bg-body border rounded-bottom h-300 overflow-hidden" id="quilleditor">
                                                 </div> */}
-                                                <CustomEditor
+                                                {/* <CustomEditor
                                                     handleInstance={handleInstance}
                                                     imageArray={imageArray}
-                                                />
+                                                /> */}
+                                                <CustomEditor/>
                                             </div>
                                         </div>
                                         <div className="col-12">
@@ -262,7 +199,7 @@ const CreateBlog = () => {
                                         </div>
                                         {/* Create post button */}
                                         <div className="col-md-12 text-start">
-                                            <button onClick={saveArticle} className="btn btn-primary w-100" type="submit">Create post</button>
+                                            <button className="btn btn-primary w-100" type="submit">Create post</button>
                                         </div>
                                     </div>
                                 </form>

@@ -1,102 +1,164 @@
-'use client';
-
-import EditorJs from 'react-editor-js';
-import CheckList from '@editorjs/checklist';
-import CodeBox from '@bomdi/codebox';
-import Delimiter from '@editorjs/delimiter';
-import Embed from '@editorjs/embed';
-import Image from '@editorjs/image';
-import InlineCode from '@editorjs/inline-code';
-import LinkTool from '@editorjs/link';
-import List from '@editorjs/list';
-import Quote from '@editorjs/quote';
-import Raw from '@editorjs/raw';
-import SimpleImage from '@editorjs/simple-image';
-import Table from '@editorjs/table';
-import Warning from '@editorjs/warning';
-import Header from '@editorjs/header';
-import ColorPlugin from 'editorjs-text-color-plugin';
-
-import { imageUpload } from '@/api/image';
-import { base_url_image } from '@/constants';
-import useAxiosAuth from '@/lib/hooks/useAxiosAuth';
-
-const CustomEditor = ({ data, imageArray, handleInstance }) => {
-  const axiosAuth = useAxiosAuth();
-
-  const EDITOR_JS_TOOLS = {
-    embed: Embed,
-    header: Header,
-    table: Table,
-    list: List,
-    warning: Warning,
-    codeBox: CodeBox,
-    linkTool: LinkTool,
-    image: {
-      class: Image,
-      config: {
-        uploader: {
-          uploadByFile(file) {
-            let formData = new FormData();
-            formData.append('images', file);
-            return imageUpload(axiosAuth, formData).then((res) => {
-              // pushing image path to image array
-              imageArray.push(base_url_image + res.data.data);
-              return {
-                success: 1,
-                file: {
-                  url: base_url_image + res.data.data,
-                },
-              };
-            });
+import { useEffect, useRef, useState } from "react";
+import EditorJS from "@editorjs/editorjs";
+import Header from "@editorjs/header";
+import List from "@editorjs/list";
+import Quote from "@editorjs/quote";
+import Delimiter from "@editorjs/delimiter";
+import InlineCode from "@editorjs/inline-code";
+import Marker from "@editorjs/marker";
+import Embed from "@editorjs/embed";
+import Image from "@editorjs/image";
+import Table from "@editorjs/table";
+import Warning from "@editorjs/warning";
+import Code from "@editorjs/code";
+import Checklist from "@editorjs/checklist";
+import LinkTool from "@editorjs/link";
+import Raw from "@editorjs/raw";
+import Paragraph from "@editorjs/paragraph";
+import Codebox from "@bomdi/codebox";
+export default function Editor() {
+    const editorRef = useRef(null);
+    const [editorData, setEditorData] = useState(null);
+    const initEditor = () => {
+        const editor = new EditorJS({
+          holderId: "editorjs",
+          tools: {
+            header: {
+              class: Header,
+              inlineToolbar: ["marker", "link"],
+              config: {
+                placeholder: 'Enter a header',
+                levels: [1, 2, 3, 4, 5, 6],
+                defaultLevel: 3
+              },
+              shortcut: "CMD+SHIFT+H",
+            },
+            image: Image,
+            code: Code,
+            paragraph: {
+              class: Paragraph,
+              inlineToolbar: true,
+            },
+            raw: Raw,
+            inlineCode: InlineCode,
+            list: {
+              class: List,
+              inlineToolbar: true,
+              shortcut: "CMD+SHIFT+L",
+            },
+            checklist: {
+              class: Checklist,
+              inlineToolbar: true,
+            },
+            quote: {
+              class: Quote,
+              inlineToolbar: true,
+              config: {
+                quotePlaceholder: "Enter a quote",
+                captionPlaceholder: "Quote's author",
+              },
+              shortcut: "CMD+SHIFT+O",
+            },
+            warning: Warning,
+            marker: {
+              class: Marker,
+              shortcut: "CMD+SHIFT+M",
+            },
+            delimiter: Delimiter,
+            inlineCode: {
+              class: InlineCode,
+              shortcut: "CMD+SHIFT+C",
+            },
+            linkTool: LinkTool,
+            embed: Embed,
+            codebox: Codebox,
+            table: {
+              class: Table,
+              inlineToolbar: true,
+              shortcut: "CMD+ALT+T",
+            },
           },
+          // autofocus: true,
+          placeholder: "Write your story...",
+          data: {
+            blocks: [
+              {
+                type: "header",
+                data: {
+                  text: "New blog post title here....",
+                  level: 2,
+                },
+              },
+              {
+                type: "paragraph",
+                data: {
+                  text: "Blog post introduction here....",
+                },
+              },
+            ],
+          },
+          onReady: () => {
+            console.log("Editor.js is ready to work!");
+            editorRef.current = editor;
+          },
+          onChange: () => {
+            console.log("Content was changed");
+          },
+          onSave: () => {
+            console.log("Content was saved");
+          },
+        });
+    };
+    const handleSave = async () => {
+      // 1. GQL mutation to create a blog post in Fauna
+      const CREATE_POST = gql`
+        mutation CreatePost($content: String!, $slug: String!) {
+          createPost(data: {published: true, content: $content, slug: $slug}) {
+            content
+            slug
+            published
+          }
+        }
+      `;
+      // 2. Get the content from the editor
+      const outputData = await editorRef.current.save();
+      // 3. Get blog title to create a slug
+      for (let i = 0; i < outputData.blocks.length; i++) {
+        if (
+          outputData.blocks[i].type === "header" &&
+          outputData.blocks[i].data.level === 2
+        ) {
+          var title = outputData.blocks[i].data.text;
+          break;
+        }
+      }
+      const slug = title.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
+      //3. Pass the content to the mutation and create a new blog post
+      const { data } = await apolloClient.mutate({
+        mutation: CREATE_POST,
+        variables: {
+          content: JSON.stringify(outputData),
+          slug: slug,
         },
-      },
-    },
-    raw: Raw,
-    quote: Quote,
-    marker: {
-      class: ColorPlugin, // if load from CDN, please try: window.ColorPlugin
-      config: {
-        defaultColor: '#FFBF00',
-        type: 'marker',
-      },
-    },
-    color: {
-      class: ColorPlugin, // if load from CDN, please try: window.ColorPlugin
-      config: {
-        colorCollections: [
-          '#FF1300',
-          '#EC7878',
-          '#9C27B0',
-          '#673AB7',
-          '#3F51B5',
-          '#0070FF',
-          '#03A9F4',
-          '#00BCD4',
-          '#4CAF50',
-          '#8BC34A',
-          '#CDDC39',
-          '#FFF',
-        ],
-        defaultColor: '#FF1300',
-        type: 'text',
-      },
-    },
-    checklist: CheckList,
-    delimiter: Delimiter,
-    inlineCode: InlineCode,
-    simpleImage: SimpleImage,
-  };
-
-  return (
-    <EditorJs
-      instanceRef={(instance) => handleInstance(instance)}
-      tools={EDITOR_JS_TOOLS}
-      data={data}
-      placeholder={`Write article from here...`}
-    />
-  );
-};
-
-export default CustomEditor;
+      });
+    };
+    useEffect(() => {
+        if(!editorRef.current) {
+            initEditor();
+        }
+    }, []);
+    return (
+      <div>
+        <div id="editorjs" />
+        <div className="flex justify-center -mt-30 mb-20">
+          <button
+            type="button"
+            onClick={handleSave}
+            className="inline-flex items-center px-12 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    );
+}
