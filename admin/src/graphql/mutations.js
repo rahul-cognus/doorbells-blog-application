@@ -5,7 +5,6 @@ export const CREATE_ARTICLE = gql`
     createArticle(data: $data) {
       _id
       title
-      // Include any other fields you want to return after creating the article
     }
   }
 `;
