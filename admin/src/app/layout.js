@@ -1,8 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ApolloWrapper } from "@/lib/apollo-wrapper";
-import { Provider } from 'react-redux';
-import store from '@/redux/store'
 
 import Header from "@/ui/Layout/Header";
 import Footer from "@/ui/Layout/Footer";
@@ -22,13 +20,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider store={store}>
-          <ApolloWrapper>
-            <Header />
-            {children}
-            <Footer />
-          </ApolloWrapper>
-        </Provider>
+        <ApolloWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </ApolloWrapper>
       </body>
     </html>
   );
