@@ -95,3 +95,8 @@ a {
     color-scheme: dark;
   }
 }
+
+
+.codex-editor .ce-block .ce-block__content,.codex-editor .ce-toolbar .ce-toolbar__content{
+  max-width: 80%;
+}
