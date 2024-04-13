@@ -30,66 +30,79 @@ const CREATE_ARTICLE = gql`
 const CreateBlog = () => {
     const [editorData, setEditorData] = useState(null);
     const [createArticle] = useMutation(CREATE_ARTICLE);
+    const [createData, setCreateData] = useState(null);
     const [slug, setSlug] = useState(""); // Define slug state
 
     const handleEditorDataChange = (data) => {
         setEditorData(data);
     };
+    const handleChangeTitle = (e) => {
+        const { name, value } = e.target;
+        setSlug(value.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
+    }
 
+    const handleFormData = (e) => {
+        const { name, value } = e.target;
+
+        setCreateData((prevCreateData) => ({
+            ...prevCreateData,
+            [name]: value,
+        }));
+
+        if(name === 'title') 
+        setSlug(value.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
+
+        if (name === "image") {
+            const file = e.target?.files[0];
+            // setImage(URL.createObjectURL(file));
+      
+            setCreateData((prevCreateData) => ({
+              ...prevCreateData,
+              image: file,
+            }));
+          }
+        console.log(name, value);
+    }
+   
+   
     const handleSave = async (e) => {
         e.preventDefault();
-        const title = e.target.title.value;
-        const slugValue = title.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
-        setSlug(slugValue);
-        // Gather data from form inputs
-        const description = e.target.description.value;
-        const categories = e.target.categories.value.split(',');
-        const content = JSON.stringify(editorData);
-        const display_url = e.target.display_url.value;
-        const image_url = e.target.image_url.value;
-        const tags = e.target.tags.value.split(',');
+        // const title = e.target.title.value;
+        // // Gather data from form inputs
+        // const description = e.target.description.value;
+        // const categories = e.target.categories.value.split(',');
+        // const content = JSON.stringify(editorData);
+        // const display_url = e.target.display_url.value;
+        // const image_url = e.target.image_url.value;
+
+        // const tags = e.target.tags.value.split(',');
 
         try {
             // Call the createArticle mutation
             const { data } = await createArticle({
                 variables: {
                     input: {
-                        title,
-                        description,
-                        categories,
-                        content,
-                        display_url,
-                        image_url,
-                        tags,
+                        title: createData.title,
+                        description: createData.description,
+                        categories: createData.categories,
+                        // content: createData.content,
+                        slug: createData.slug,
+                        image_url: createData.image,
+                        tags: createData.tags ? createData.tags.split(',') : "",
                     },
                 },
             });
-
+        
             console.log("Blog post created successfully:", data.createArticle);
         } catch (error) {
             console.error("Error creating blog post:", error);
         }
+        
     };
 
-    // const handleSave = async () => {
-    //     // Extract title from editor data
-    //     const titleBlock = editorData.blocks.find(block => block.type === 'header' && block.data.level === 2);
-    //     const title = titleBlock ? titleBlock.data.text : 'Untitled';
+   
 
-    //     const slug = title.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, "");
 
-    //     try {
-    //         await createPost({
-    //             variables: {
-    //                 content: JSON.stringify(editorData),
-    //                 slug: slug,
-    //             },
-    //         });
-    //         console.log("Blog post created successfully!");
-    //     } catch (error) {
-    //         console.error("Error creating blog post:", error);
-    //     }
-    // };
     return (
         <section className="py-4">
             <div className="container">
@@ -113,7 +126,7 @@ const CreateBlog = () => {
                                             {/* Post name */}
                                             <div className="mb-3">
                                                 <label className="form-label">Title</label>
-                                                <input required id="con-name" name="name" type="text" className="form-control" placeholder="Title" />
+                                                <input required id="con-name" onChange={handleFormData} name="title" type="text" className="form-control" placeholder="Title" />
                                                 {/* <small>Moving heaven divide two sea female great midst spirit</small> */}
                                             </div>
                                         </div>
@@ -121,7 +134,7 @@ const CreateBlog = () => {
                                             {/* Post name */}
                                             <div className="mb-3">
                                                 <label className="form-label">Slug</label>
-                                                <input required id="con-name" name="display_url" type="text" className="form-control" defaultValue={slug} placeholder="Slug" />
+                                                <input required id="con-name" onChange={handleFormData} name="slug" type="text" className="form-control" value={slug ? slug : ""} placeholder="Slug" />
                                                 {/* <small>Moving heaven divide two sea female great midst spirit</small> */}
                                             </div>
                                         </div>
@@ -131,7 +144,7 @@ const CreateBlog = () => {
                                         <div className="col-12">
                                             <div className="mb-3">
                                                 <label className="form-label">Short description </label>
-                                                <textarea className="form-control" name="description" rows="3" placeholder="Add description"></textarea>
+                                                <textarea className="form-control" onChange={handleFormData} name="description" rows="3" placeholder="Add description"></textarea>
                                             </div>
                                         </div>
 
@@ -162,7 +175,7 @@ const CreateBlog = () => {
                                                     <h6 className="my-2">Upload post image here, or<a href="#!" className="text-primary"> Browse</a></h6>
                                                     <label className="w-100" style={{ cursor: 'pointer' }}>
                                                         <span>
-                                                            <input className="form-control stretched-link" type="file" name="image_url" id="image" accept="image/gif, image/jpeg, image/png" />
+                                                            <input className="form-control stretched-link" onChange={handleFormData} type="file" name="image_url" id="image" accept="image/gif, image/jpeg, image/png" />
                                                         </span>
                                                     </label>
                                                 </div>
@@ -173,7 +186,7 @@ const CreateBlog = () => {
                                             {/* Tags */}
                                             <div className="mb-3">
                                                 <label className="form-label">Tags</label>
-                                                <textarea className="form-control" name='tags' rows="1" placeholder="business, sports ..."></textarea>
+                                                <textarea className="form-control" onChange={handleFormData} name='tags' rows="1" placeholder="business, sports ..."></textarea>
                                                 <small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing.</small>
                                             </div>
                                         </div>
@@ -181,13 +194,13 @@ const CreateBlog = () => {
                                             {/* Message */}
                                             <div className="mb-3">
                                                 <label className="form-label">Category</label>
-                                                <select name="categories" className="form-select" aria-label="Default select example">
-                                                    <option selected>Lifestyle</option>
-                                                    <option value="1">Technology</option>
-                                                    <option value="2">Travel</option>
-                                                    <option value="3">Business</option>
-                                                    <option value="4">Sports</option>
-                                                    <option value="5">Marketing</option>
+                                                <select name="categories" onChange={handleFormData} value={createData?.categories} className="form-select" aria-label="Default select example">
+                                                    <option value="Lifestyle">Lifestyle</option>
+                                                    <option value="Technology">Technology</option>
+                                                    <option value="Travel">Travel</option>
+                                                    <option value="Business">Business</option>
+                                                    <option value="Sports">Sports</option>
+                                                    <option value="Marketing">Marketing</option>
                                                 </select>
                                             </div>
                                         </div>
