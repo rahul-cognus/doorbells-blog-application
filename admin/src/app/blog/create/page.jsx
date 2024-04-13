@@ -3,18 +3,25 @@
 import React, { useState } from 'react';
 
 import dynamic from 'next/dynamic';
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 
 
 let CustomEditor = dynamic(() => import('@/ui/Editor/CustomEditor'), {
     ssr: false,
 });
 
-
+const GET_CATEGORIES = gql`
+  query GetAllCategories {
+    getAllCategories {
+      _id
+      name
+      slug
+    }
+  }
+`;
 const CREATE_ARTICLE = gql`
   mutation CreateArticle($input: ArticleInput!) {
     createArticle(input: $input) {
-      id
       title
       description
       categories
@@ -32,6 +39,7 @@ const CreateBlog = () => {
     const [createArticle] = useMutation(CREATE_ARTICLE);
     const [createData, setCreateData] = useState(null);
     const [slug, setSlug] = useState(""); // Define slug state
+    const { loading, error, data } = useQuery(GET_CATEGORIES);
 
     const handleEditorDataChange = async (dataPromise) => {
         const data = await dataPromise;
@@ -102,7 +110,8 @@ const CreateBlog = () => {
 
 
 
-
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
     return (
         <section className="py-4">
             <div className="container">
@@ -195,12 +204,10 @@ const CreateBlog = () => {
                                             <div className="mb-3">
                                                 <label className="form-label">Category</label>
                                                 <select name="categories" onChange={handleFormData} value={createData?.categories} className="form-select" aria-label="Default select example">
-                                                    <option value="Lifestyle">Lifestyle</option>
-                                                    <option value="Technology">Technology</option>
-                                                    <option value="Travel">Travel</option>
-                                                    <option value="Business">Business</option>
-                                                    <option value="Sports">Sports</option>
-                                                    <option value="Marketing">Marketing</option>
+                                                    <option value="">Select a category</option>
+                                                    {data.getAllCategories.map(categoryList => (
+                                                        <option key={categoryList._id} value={categoryList._id}>{categoryList.name}</option>
+                                                    ))}
                                                 </select>
                                             </div>
                                         </div>
