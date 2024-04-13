@@ -33,13 +33,13 @@ const CreateBlog = () => {
     const [createData, setCreateData] = useState(null);
     const [slug, setSlug] = useState(""); // Define slug state
 
-    const handleEditorDataChange = (data) => {
+    const handleEditorDataChange = async (dataPromise) => {
+        const data = await dataPromise;
         setEditorData(data);
+        console.log(data);
+        // You can perform further actions with the editor data here
     };
-    const handleChangeTitle = (e) => {
-        const { name, value } = e.target;
-        setSlug(value.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
-    }
+
 
     const handleFormData = (e) => {
         const { name, value } = e.target;
@@ -49,22 +49,22 @@ const CreateBlog = () => {
             [name]: value,
         }));
 
-        if(name === 'title') 
-        setSlug(value.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
+        if (name === 'title' || name === 'slug')
+            setSlug(value.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
 
         if (name === "image") {
-            const file = e.target?.files[0];
+            const file = e?.target?.files[0];
             // setImage(URL.createObjectURL(file));
-      
+
             setCreateData((prevCreateData) => ({
-              ...prevCreateData,
-              image: file,
+                ...prevCreateData,
+                image: file,
             }));
-          }
+        }
         console.log(name, value);
     }
-   
-   
+
+
     const handleSave = async (e) => {
         e.preventDefault();
         // const title = e.target.title.value;
@@ -92,15 +92,15 @@ const CreateBlog = () => {
                     },
                 },
             });
-        
+
             console.log("Blog post created successfully:", data.createArticle);
         } catch (error) {
             console.error("Error creating blog post:", error);
         }
-        
+
     };
 
-   
+
 
 
     return (
@@ -126,7 +126,7 @@ const CreateBlog = () => {
                                             {/* Post name */}
                                             <div className="mb-3">
                                                 <label className="form-label">Title</label>
-                                                <input required id="con-name" onChange={handleFormData} name="title" type="text" className="form-control" placeholder="Title" />
+                                                <input id="con-name" onChange={handleFormData} name="title" type="text" className="form-control" placeholder="Title" />
                                                 {/* <small>Moving heaven divide two sea female great midst spirit</small> */}
                                             </div>
                                         </div>
@@ -134,7 +134,7 @@ const CreateBlog = () => {
                                             {/* Post name */}
                                             <div className="mb-3">
                                                 <label className="form-label">Slug</label>
-                                                <input required id="con-name" onChange={handleFormData} name="slug" type="text" className="form-control" value={slug ? slug : ""} placeholder="Slug" />
+                                                <input id="con-name" onChange={handleFormData} name="slug" type="text" className="form-control" value={slug} placeholder="Slug" />
                                                 {/* <small>Moving heaven divide two sea female great midst spirit</small> */}
                                             </div>
                                         </div>
