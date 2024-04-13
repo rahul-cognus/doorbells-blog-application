@@ -40,12 +40,12 @@ const Header = () => {
                                 </ul>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="bi bi-pencil me-1"></i>Category</a>
+                                <a className="nav-link dropdown-toggle" href="/category" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="bi bi-pencil me-1"></i>Category</a>
                                 <ul className="dropdown-menu" aria-labelledby="postMenu">
 
-                                    <li> <Link className="dropdown-item" href="dashboard-post-list.html">Category List</Link> </li>
-                                    <li> <Link className="dropdown-item" href="dashboard-post-create.html">Create Category</Link> </li>
-                                    <li> <Link className="dropdown-item" href="dashboard-post-edit.html">Edit Category</Link> </li>
+                                    <li> <Link className="dropdown-item" href="/category">Category List</Link> </li>
+                                    <li> <Link className="dropdown-item" href="/category/create">Create Category</Link> </li>
+                                    <li> <Link className="dropdown-item" href="/category/edit">Edit Category</Link> </li>
                                 </ul>
                             </li>
                             <li className="nav-item dropdown">
