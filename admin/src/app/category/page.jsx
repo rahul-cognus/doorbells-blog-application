@@ -33,7 +33,7 @@ const Category = () => {
                     <div class="row g-4">
 
                         {
-                            data.getAllCategories.map(category => (
+                            data.getAllCategories.map((category) => (
                                 <div class="col-md-6 col-xl-4">
                                     {/* Category item START */}
                                     <div class="card border h-100">
@@ -79,7 +79,7 @@ const Category = () => {
 
                                         {/* Card footer */}
                                         <div class="card-footer border-top text-center p-3">
-                                            <a href="#" class="btn btn-primary-soft w-100 mb-0">View posts</a>
+                                            <a href={category.slug} class="btn btn-primary-soft w-100 mb-0">View posts</a>
                                         </div>
                                     </div>
                                     {/* Category item END */}
