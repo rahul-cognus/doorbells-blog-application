@@ -132,7 +132,7 @@ const typeDefs = gql`
     content: String!
     display_url: String!
     image_url: String
-    tags: [TagInput]!
+    tags: [ID]
   }
   input CategoryInput {
     name: String!
