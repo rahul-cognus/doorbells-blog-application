@@ -24,13 +24,12 @@ const CREATE_ARTICLE = gql`
     createArticle(input: $input) {
       title
       description
-      categories
+      categories{
+        _id
+      }
       content
       display_url
       image_url
-      tags {
-        name
-      }
     }
   }
 `;
@@ -93,10 +92,10 @@ const CreateBlog = () => {
                         title: createData.title,
                         description: createData.description,
                         categories: createData.categories,
-                        // content: createData.content,
-                        slug: createData.slug,
+                        content: JSON.stringify(editorData),
+                        display_url: slug,
                         image_url: createData.image,
-                        tags: createData.tags ? createData.tags.split(',') : "",
+                        // tags: createData.tags ? createData.tags.split(',') : "",
                     },
                 },
             });
