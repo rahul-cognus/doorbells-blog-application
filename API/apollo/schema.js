@@ -2,18 +2,18 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type Article {
     _id: ID!
-    author: User!
+    author: User
     title: String!
     description: String!
-    categories: [Category]!
-    content: String!
+    categories: Category!
+    content: [String]!
     display_url: String!
     image_url: String
-    tags: [Tag]!
-    number_of_likes: Int!
-    number_of_comments: Int!
-    created_at: String!
-    updated_at: String!
+    tags: [Tag]
+    number_of_likes: Int
+    number_of_comments: Int
+    created_at: String
+    updated_at: String
   }
 
   type User {
@@ -125,11 +125,11 @@ const typeDefs = gql`
   }
 
   input ArticleInput {
-    author_id: ID!
+    author: ID
     title: String!
     description: String!
-    categories: [ID]!
-    content: String!
+    categories: ID!
+    content: [String]!
     display_url: String!
     image_url: String
     tags: [ID]
