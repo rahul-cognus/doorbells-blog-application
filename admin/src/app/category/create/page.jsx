@@ -52,10 +52,14 @@ const CreateCategory = () => {
             setAlert("Category created successfully!");
 
             // Clear form fields
-            setCategoryData({});
-            setSlug("");
+            setCategoryData({
+                category: '',
+                description: '',
+                slug: ''
+              });
 
-            // Hide alert after 3 seconds
+              setSlug("");
+
             setTimeout(() => {
                 setAlert(null);
             }, 3000);
@@ -97,7 +101,7 @@ const CreateCategory = () => {
                                             {/* Post name */}
                                             <div className="mb-3">
                                                 <label className="form-label">Category</label>
-                                                <input id="con-name" onChange={handleCategoryData} name="category" type="text" className="form-control" placeholder="Category" />
+                                                <input id="con-name" onChange={handleCategoryData} name="category" type="text" value={createCategoryData?.category} className="form-control" placeholder="Category" />
                                                 {/* <small>Moving heaven divide two sea female great midst spirit</small> */}
                                             </div>
                                         </div>
@@ -115,7 +119,7 @@ const CreateCategory = () => {
                                         <div className="col-12">
                                             <div className="mb-3">
                                                 <label className="form-label">Short description </label>
-                                                <textarea className="form-control" onChange={handleCategoryData} name="description" rows="3" placeholder="Add description"></textarea>
+                                                <textarea className="form-control" onChange={handleCategoryData} value={createCategoryData?.description} name="description" rows="3" placeholder="Add description"></textarea>
                                             </div>
                                         </div>
                                         {/* Create post button */}
