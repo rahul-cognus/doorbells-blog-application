@@ -5,6 +5,7 @@ import "@/public/scss/style.scss";
 import "@/public/css/style.css";
 import Header from "@/ui/layout/Header";
 import Footer from "@/ui/layout/Footer";
+import { ApolloWrapper } from "@/lib/apollo-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <ApolloWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </ApolloWrapper>
       </body>
     </html>
   );

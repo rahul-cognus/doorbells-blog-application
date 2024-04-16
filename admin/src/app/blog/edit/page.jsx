@@ -36,7 +36,7 @@ const EditBlog = () => {
                                                     {/* Post type item */}
                                                     <div className="flex-fill">
                                                         <input type="radio" className="btn-check" name="poll" id="option" checked />
-                                                        <label className="btn btn-outline-light w-100" for="option">
+                                                        <label className="btn btn-outline-light w-100" htmlFor="option">
                                                             <i className="bi bi-chat-left-text fs-1"></i>
                                                             <span className="d-block"> Post </span>
                                                         </label>
@@ -44,7 +44,7 @@ const EditBlog = () => {
                                                     {/* Post type item */}
                                                     <div className="flex-fill">
                                                         <input type="radio" className="btn-check" name="poll" id="option2" />
-                                                        <label className="btn btn-outline-light w-100" for="option2">
+                                                        <label className="btn btn-outline-light w-100" htmlFor="option2">
                                                             <i className="bi bi-patch-question fs-1"></i>
                                                             <span className="d-block"> Question </span>
                                                         </label>
@@ -52,7 +52,7 @@ const EditBlog = () => {
                                                     {/* Post type item */}
                                                     <div className="flex-fill">
                                                         <input type="radio" className="btn-check" name="poll" id="option3" />
-                                                        <label className="btn btn-outline-light w-100" for="option3">
+                                                        <label className="btn btn-outline-light w-100" htmlFor="option3">
                                                             <i className="bi bi-chat-right-dots fs-1"></i>
                                                             <span className="d-block"> Poll </span>
                                                         </label>
@@ -60,7 +60,7 @@ const EditBlog = () => {
                                                     {/* Post type item */}
                                                     <div className="flex-fill">
                                                         <input type="radio" className="btn-check" name="poll" id="option4" />
-                                                        <label className="btn btn-outline-light w-100" for="option4">
+                                                        <label className="btn btn-outline-light w-100" htmlFor="option4">
                                                             <i className="bi bi-ui-checks-grid fs-1"></i>
                                                             <span className="d-block"> Images </span>
                                                         </label>
@@ -68,7 +68,7 @@ const EditBlog = () => {
                                                     {/* Post type item */}
                                                     <div className="flex-fill">
                                                         <input type="radio" className="btn-check" name="poll" id="option5" />
-                                                        <label className="btn btn-outline-light w-100" for="option5">
+                                                        <label className="btn btn-outline-light w-100" htmlFor="option5">
                                                             <i className="bi bi-camera-reels fs-1"></i>
                                                             <span className="d-block"> Video </span>
                                                         </label>
@@ -76,7 +76,7 @@ const EditBlog = () => {
                                                     {/* Post type item */}
                                                     <div className="flex-fill">
                                                         <input type="radio" className="btn-check" name="poll" id="option6" />
-                                                        <label className="btn btn-outline-light w-100" for="option6">
+                                                        <label className="btn btn-outline-light w-100" htmlFor="option6">
                                                             <i className="bi bi-chat-square fs-1"></i>
                                                             <span className="d-block"> Other </span>
                                                         </label>
@@ -205,7 +205,7 @@ const EditBlog = () => {
                                         <div className="col-12">
                                             <div className="form-check mb-3">
                                                 <input className="form-check-input" type="checkbox" value="" id="postCheck" />
-                                                <label className="form-check-label" for="postCheck">
+                                                <label className="form-check-label" htmlFor="postCheck">
                                                     Make this post featured?
                                                 </label>
                                             </div>

@@ -319,7 +319,7 @@ const Category = () => {
                                         <nav className="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
                                             <ul className="pagination pagination-sm pagination-bordered mb-0">
                                                 <li className="page-item disabled">
-                                                    <a className="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                                                    <a className="page-link" href="#" tabIndex="-1" aria-disabled="true">Prev</a>
                                                 </li>
                                                 <li className="page-item"><a className="page-link" href="#">1</a></li>
                                                 <li className="page-item active"><a className="page-link" href="#">2</a></li>

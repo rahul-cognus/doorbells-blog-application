@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Category = ({ category }) => {
+const Category = ({ params }) => {
     return (
         <>
             <section className="pt-4">
@@ -17,8 +17,8 @@ const Category = ({ category }) => {
                                     <div className="w-100 my-auto">
                                         <div className="text-white mb-3">Browsing category:</div>
                                         <h1 className="text-white h2">
-                                            <span className="badge text-bg-warning mb-2">
-                                                <i className="fas fa-circle me-2 small fw-bold"></i>Technology</span>
+                                            <span className="badge text-bg-warning mb-2 text-capitalize">
+                                                <i className="fas fa-circle me-2 small fw-bold"></i>{params.category}</span>
                                         </h1>
                                         <div className="text-center position-relative">
                                             <span className="badge text-bg-info fs-6">14 posts</span>
@@ -266,7 +266,7 @@ const Category = ({ category }) => {
                                     <nav className="mb-5 d-flex justify-content-center" aria-label="navigation">
                                         <ul className="pagination pagination-bordered ">
                                             <li className="page-item disabled">
-                                                <a className="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                                                <a className="page-link" href="#" tabIndex="-1" aria-disabled="true">Prev</a>
                                             </li>
                                             <li className="page-item"><a className="page-link" href="#">1</a></li>
                                             <li className="page-item active"><a className="page-link" href="#">2</a></li>

@@ -12,18 +12,18 @@ const Login = () => {
                             <form className="mt-4">
                                 {/* Email */}
                                 <div className="mb-3">
-                                    <label className="form-label" for="exampleInputEmail1">Email address</label>
+                                    <label className="form-label" htmlFor="exampleInputEmail1">Email address</label>
                                     <input type="email" className="form-control" id="exampleInputEmail1" placeholder="E-mail" />
                                 </div>
                                 {/* Password */}
                                 <div className="mb-3">
-                                    <label className="form-label" for="exampleInputPassword1">Password</label>
+                                    <label className="form-label" htmlFor="exampleInputPassword1">Password</label>
                                     <input type="password" className="form-control" id="exampleInputPassword1" placeholder="*********" />
                                 </div>
                                 {/* Checkbox */}
                                 <div className="mb-3 form-check">
                                     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                    <label className="form-check-label" for="exampleCheck1">keep me signed in</label>
+                                    <label className="form-check-label" htmlFor="exampleCheck1">keep me signed in</label>
                                 </div>
                                 {/* Button */}
                                 <div className="row align-items-center">
