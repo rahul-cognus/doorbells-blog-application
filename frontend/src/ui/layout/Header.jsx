@@ -69,16 +69,16 @@ const Header = () => {
 							{/* Top bar left */}
 							<ul className="nav">
 								<li className="nav-item">
-									<a className="nav-link ps-0" href="about-us.html">About</a>
+									<Link className="nav-link ps-0" href="/about">About</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">Forum</a>
+									<Link className="nav-link" href="#">Forum</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="https://themes.getbootstrap.com/store/webestica/">Buy now!</a>
+									<Link className="nav-link" href="https://themes.getbootstrap.com/store/webestica/">Buy now!</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="signin.html">Login / Join</a>
+									<Link className="nav-link" href="/login">Login / Join</Link>
 								</li>
 							</ul>
 							{/* Top bar right */}
@@ -134,19 +134,19 @@ const Header = () => {
 
 								<ul className="nav">
 									<li className="nav-item">
-										<a className="nav-link px-2 fs-5" href="#"><i className="fab fa-facebook-square"></i></a>
+										<Link className="nav-link px-2 fs-5" href="#"><i className="fab fa-facebook-square"></i></Link>
 									</li>
 									<li className="nav-item">
-										<a className="nav-link px-2 fs-5" href="#"><i className="fab fa-twitter-square"></i></a>
+										<Link className="nav-link px-2 fs-5" href="#"><i className="fab fa-twitter-square"></i></Link>
 									</li>
 									<li className="nav-item">
-										<a className="nav-link px-2 fs-5" href="#"><i className="fab fa-linkedin"></i></a>
+										<Link className="nav-link px-2 fs-5" href="#"><i className="fab fa-linkedin"></i></Link>
 									</li>
 									<li className="nav-item">
-										<a className="nav-link px-2 fs-5" href="#"><i className="fab fa-youtube-square"></i></a>
+										<Link className="nav-link px-2 fs-5" href="#"><i className="fab fa-youtube-square"></i></Link>
 									</li>
 									<li className="nav-item">
-										<a className="nav-link ps-2 pe-0 fs-5" href="#"><i className="fab fa-vimeo"></i></a>
+										<Link className="nav-link ps-2 pe-0 fs-5" href="#"><i className="fab fa-vimeo"></i></Link>
 									</li>
 								</ul>
 							</div>
@@ -160,7 +160,7 @@ const Header = () => {
 				<nav className="navbar navbar-expand-lg">
 					<div className="container">
 						{/* Logo START */}
-						<a className="navbar-brand" href="index-2.html">
+						<a className="navbar-brand" href="/">
 							<Image className="navbar-brand-item light-mode-item" src={'/images/logo.svg'} alt="logo" width={139} height={30} />
 							<Image className="navbar-brand-item dark-mode-item" src={'/images/logo-light.svg'} alt="logo" width={139} height={30} />
 						</a>
@@ -180,18 +180,18 @@ const Header = () => {
 								<li className="nav-item dropdown">
 									<a className="nav-link dropdown-toggle active" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
 									<ul className="dropdown-menu" aria-labelledby="homeMenu">
-										<li> <a className="dropdown-item active" href="index-2.html">Home default</a></li>
-										<li> <a className="dropdown-item" href="index-lazy.html">Home lazy load</a></li>
-										<li> <a className="dropdown-item" href="index-3.html">Magazine classic</a></li>
-										<li> <a className="dropdown-item" href="index-4.html">Magazine</a></li>
-										<li> <a className="dropdown-item" href="index-5.html">Home cards</a></li>
-										<li> <a className="dropdown-item" href="index-6.html">Blog classic</a></li>
-										<li> <a className="dropdown-item" href="index-7.html">Blog Personal </a></li>
-										<li> <a className="dropdown-item" href="index-8.html">Blog Vintage</a></li>
-										<li> <a className="dropdown-item" href="index-9.html">Blog Tech</a></li>
-										<li> <a className="dropdown-item" href="index-10.html">Blog Fashion</a></li>
-										<li> <a className="dropdown-item" href="index-11.html">Blog Podcast</a></li>
-										<li> <a className="dropdown-item" href="index-12.html">Home Shop </a></li>
+										<li> <Link className="dropdown-item active" href="index-2.html">Home default</Link></li>
+										<li> <Link className="dropdown-item" href="index-lazy.html">Home lazy load</Link></li>
+										<li> <Link className="dropdown-item" href="index-3.html">Magazine classic</Link></li>
+										<li> <Link className="dropdown-item" href="index-4.html">Magazine</Link></li>
+										<li> <Link className="dropdown-item" href="index-5.html">Home cards</Link></li>
+										<li> <Link className="dropdown-item" href="index-6.html">Blog classic</Link></li>
+										<li> <Link className="dropdown-item" href="index-7.html">Blog Personal </Link></li>
+										<li> <Link className="dropdown-item" href="index-8.html">Blog Vintage</Link></li>
+										<li> <Link className="dropdown-item" href="index-9.html">Blog Tech</Link></li>
+										<li> <Link className="dropdown-item" href="index-10.html">Blog Fashion</Link></li>
+										<li> <Link className="dropdown-item" href="index-11.html">Blog Podcast</Link></li>
+										<li> <Link className="dropdown-item" href="index-12.html">Home Shop </Link></li>
 									</ul>
 								</li>
 
@@ -199,32 +199,32 @@ const Header = () => {
 								<li className="nav-item dropdown">
 									<a className="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
 									<ul className="dropdown-menu" aria-labelledby="pagesMenu">
-										<li> <a className="dropdown-item" href="about-us.html">About</a></li>
-										<li> <a className="dropdown-item" href="contact-us.html">Contact</a></li>
+										<li> <a className="dropdown-item" href="/about">About</a></li>
+										<li> <a className="dropdown-item" href="/contact">Contact</a></li>
 										{/* Dropdown submenu */}
 										<li className="dropdown-submenu dropend">
 											<a className="dropdown-item dropdown-toggle" href="#">Shop</a>
 											<ul className="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-												<li> <a className="dropdown-item" href="shop-grid.html">Shop grid</a> </li>
-												<li> <a className="dropdown-item" href="shop-detail.html">Shop detail</a> </li>
-												<li> <a className="dropdown-item" href="checkout.html">Checkout</a> </li>
-												<li> <a className="dropdown-item" href="my-cart.html">Cart</a> </li>
-												<li> <a className="dropdown-item" href="empty-cart.html">Empty Cart</a> </li>
+												<li> <Link className="dropdown-item" href="shop-grid.html">Shop grid</Link> </li>
+												<li> <Link className="dropdown-item" href="shop-detail.html">Shop detail</Link> </li>
+												<li> <Link className="dropdown-item" href="checkout.html">Checkout</Link> </li>
+												<li> <Link className="dropdown-item" href="my-cart.html">Cart</Link> </li>
+												<li> <Link className="dropdown-item" href="empty-cart.html">Empty Cart</Link> </li>
 											</ul>
 										</li>
 										{/* Dropdown submenu */}
 										<li className="dropdown-submenu dropend">
 											<a className="dropdown-item dropdown-toggle" href="#">Other Archives</a>
 											<ul className="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-												<li> <a className="dropdown-item" href="author.html">Author Page</a> </li>
-												<li> <a className="dropdown-item" href="categories.html">Category page 1</a> </li>
-												<li> <a className="dropdown-item" href="categories-2.html">Category page 2</a> </li>
-												<li> <a className="dropdown-item" href="tag.html"># tag</a> </li>
-												<li> <a className="dropdown-item" href="search-result.html">Search result</a> </li>
+												<li> <Link className="dropdown-item" href="author.html">Author Page</Link> </li>
+												<li> <Link className="dropdown-item" href="categories.html">Category page 1</Link> </li>
+												<li> <Link className="dropdown-item" href="categories-2.html">Category page 2</Link> </li>
+												<li> <Link className="dropdown-item" href="tag.html"># tag</Link> </li>
+												<li> <Link className="dropdown-item" href="search-result.html">Search result</Link> </li>
 											</ul>
 										</li>
 										<li> <a className="dropdown-item" href="404.html">Error 404</a></li>
-										<li> <a className="dropdown-item" href="signin.html">signin</a></li>
+										<li> <a className="dropdown-item" href="/login">signin</a></li>
 										<li> <a className="dropdown-item" href="signup.html">signup</a></li>
 										<li> <a className="dropdown-item" href="offline.html">offline</a></li>
 										{/* Dropdown submenu levels */}
@@ -322,11 +322,11 @@ const Header = () => {
 														{/* Card img */}
 														<Image className="card-img rounded" src={'/images/blog/16by9/small/01.jpg'} alt="Card image" width={261} height={147} />
 														<div className="card-body px-0 pt-3">
-															<h6 className="card-title mb-0"><a href="#" className="btn-link text-reset fw-bold">7 common mistakes everyone makes while traveling</a></h6>
+															<h6 className="card-title mb-0"><Link href={'/'} className="btn-link text-reset fw-bold">7 common mistakes everyone makes while traveling</Link></h6>
 															{/* Card info */}
 															<ul className="nav nav-divider align-items-center text-uppercase small mt-2">
 																<li className="nav-item">
-																	<a href="#" className="text-reset btn-link">Joan Wallace</a>
+																	<Link href={'/'} className="text-reset btn-link">Joan Wallace</Link>
 																</li>
 																<li className="nav-item">Feb 18, 2022</li>
 															</ul>
@@ -340,11 +340,11 @@ const Header = () => {
 														{/* Card img */}
 														<Image className="card-img rounded" src={'/images/blog/16by9/small/02.jpg'} alt="Card image" width={261} height={147} />
 														<div className="card-body px-0 pt-3">
-															<h6 className="card-title mb-0"><a href="#" className="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</a></h6>
+															<h6 className="card-title mb-0"><Link href={'/'} className="btn-link text-reset fw-bold">12 worst types of business accounts you follow on Twitter</Link></h6>
 															{/* Card info */}
 															<ul className="nav nav-divider align-items-center text-uppercase small mt-2">
 																<li className="nav-item">
-																	<a href="#" className="text-reset btn-link">Lori Stevens</a>
+																	<Link href={'/'} className="text-reset btn-link">Lori Stevens</Link>
 																</li>
 																<li className="nav-item">Jun 03, 2022</li>
 															</ul>
@@ -358,11 +358,11 @@ const Header = () => {
 														{/* Card img */}
 														<Image className="card-img rounded" src={'/images/blog/16by9/small/03.jpg'} alt="Card image" width={261} height={147} />
 														<div className="card-body px-0 pt-3">
-															<h6 className="card-title mb-0"><a href="#" className="btn-link text-reset fw-bold">Skills that you can learn from business</a></h6>
+															<h6 className="card-title mb-0"><Link href={'/'} className="btn-link text-reset fw-bold">Skills that you can learn from business</Link></h6>
 															{/* Card info */}
 															<ul className="nav nav-divider align-items-center text-uppercase small mt-2">
 																<li className="nav-item">
-																	<a href="#" className="text-reset btn-link">Judy Nguyen</a>
+																	<Link href={'/'} className="text-reset btn-link">Judy Nguyen</Link>
 																</li>
 																<li className="nav-item">Sep 07, 2022</li>
 															</ul>
@@ -376,7 +376,7 @@ const Header = () => {
 														<span>The Blogzine</span>
 														<h3>Premium Membership</h3>
 														<p>Become a Member Today!</p>
-														<a href="#" className="btn btn-warning">View pricing plans</a>
+														<Link href={'/'} className="btn btn-warning">View pricing plans</Link>
 													</div>
 												</div>
 												{/* Card item END */}
@@ -386,15 +386,15 @@ const Header = () => {
 												<div className="col-12">
 													<ul className="list-inline mt-3">
 														<li className="list-inline-item">Trending tags:</li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-primary-soft">Travel</a></li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-warning-soft">Business</a></li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-success-soft">Tech</a></li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-danger-soft">Gadgets</a></li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-info-soft">Lifestyle</a></li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-primary-soft">Vaccine</a></li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-success-soft">Sports</a></li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-danger-soft">Covid-19</a></li>
-														<li className="list-inline-item"><a href="#" className="btn btn-sm btn-info-soft">Politics</a></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-primary-soft">Travel</Link></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-warning-soft">Business</Link></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-success-soft">Tech</Link></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-danger-soft">Gadgets</Link></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-info-soft">Lifestyle</Link></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-primary-soft">Vaccine</Link></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-success-soft">Sports</Link></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-danger-soft">Covid-19</Link></li>
+														<li className="list-inline-item"><Link href={'/'} className="btn btn-sm btn-info-soft">Politics</Link></li>
 													</ul>
 												</div>
 											</div> {/* Row END */}
@@ -409,7 +409,7 @@ const Header = () => {
 						<div className="nav flex-nowrap align-items-center">
 							{/* Nav Button */}
 							<div className="nav-item d-none d-md-block">
-								<a href="#" className="btn btn-sm btn-danger mb-0 mx-2">Subscribe!</a>
+								<Link href={'/'} className="btn btn-sm btn-danger mb-0 mx-2">Subscribe!</Link>
 							</div>
 							{/* Nav Search */}
 							<div className="nav-item dropdown dropdown-toggle-icon-none nav-search">
