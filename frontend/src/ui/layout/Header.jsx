@@ -401,9 +401,6 @@ const Header = () => {
 										</div>
 									</div>
 								</li>
-
-								{/* Nav item 5 link*/}
-								<li className="nav-item"> <a className="nav-link" href="dashboard.html">Dashboard</a></li>
 							</ul>
 						</div>
 						{/* Main navbar END */}

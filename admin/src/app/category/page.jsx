@@ -19,57 +19,57 @@ const Category = () => {
     if (error) return <p>Error: {error.message}</p>;
     return (
         <>
-            <section class="py-4">
-                <div class="container">
-                    <div class="row pb-4">
-                        <div class="col-12">
+            <section className="py-4">
+                <div className="container">
+                    <div className="row pb-4">
+                        <div className="col-12">
                             {/* Title */}
-                            <div class="d-sm-flex justify-content-sm-between align-items-center">
-                                <h1 class="mb-2 mb-sm-0 h2">Categories <span class="badge bg-primary bg-opacity-10 text-primary">07</span></h1>
-                                <a href="/category/create" class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Add new category</a>
+                            <div className="d-sm-flex justify-content-sm-between align-items-center">
+                                <h1 className="mb-2 mb-sm-0 h2">Categories <span className="badge bg-primary bg-opacity-10 text-primary">07</span></h1>
+                                <a href="/category/create" className="btn btn-sm btn-primary mb-0"><i className="fas fa-plus me-2"></i>Add new category</a>
                             </div>
                         </div>
                     </div>
-                    <div class="row g-4">
+                    <div className="row g-4">
 
                         {
                             data.getAllCategories.map((category) => (
-                                <div class="col-md-6 col-xl-4">
+                                <div className="col-md-6 col-xl-4">
                                     {/* Category item START */}
-                                    <div class="card border h-100">
+                                    <div className="card border h-100">
                                         {/* Card header */}
-                                        <div class="card-header border-bottom p-3">
-                                            <div class="d-flex align-items-center">
-                                                <div class="icon-lg shadow bg-body rounded-circle">🤖</div>
-                                                <h3 class="mb-0 ms-3">{category.name}</h3>
+                                        <div className="card-header border-bottom p-3">
+                                            <div className="d-flex align-items-center">
+                                                <div className="icon-lg shadow bg-body rounded-circle">🤖</div>
+                                                <h3 className="mb-0 ms-3">{category.name}</h3>
                                             </div>
                                         </div>
 
                                         {/* Card body START */}
-                                        <div class="card-body p-3">
+                                        <div className="card-body p-3">
                                             <p>{category.description}</p>
 
                                             {/* Followers and Post */}
-                                            <div class="d-flex justify-content-between">
+                                            <div className="d-flex justify-content-between">
                                                 {/* Total post */}
                                                 <div>
-                                                    <h5 class="mb-0">846</h5>
-                                                    <h6 class="mb-0 fw-light">Total posts</h6>
+                                                    <h5 className="mb-0">846</h5>
+                                                    <h6 className="mb-0 fw-light">Total posts</h6>
                                                 </div>
 
                                                 {/* Avatar group */}
-                                                {/* <ul class="avatar-group mb-0">
-                                                    <li class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar" />
+                                                {/* <ul className="avatar-group mb-0">
+                                                    <li className="avatar avatar-xs">
+                                                        <img className="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="avatar" />
                                                     </li>
-                                                    <li class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="avatar" />
+                                                    <li className="avatar avatar-xs">
+                                                        <img className="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="avatar" />
                                                     </li>
-                                                    <li class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt="avatar" />
+                                                    <li className="avatar avatar-xs">
+                                                        <img className="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt="avatar" />
                                                     </li>
-                                                    <li class="avatar avatar-xs">
-                                                        <div class="avatar-img rounded-circle bg-primary"><i class="fas fa-plus text-white position-absolute top-50 start-50 translate-middle"></i></div>
+                                                    <li className="avatar avatar-xs">
+                                                        <div className="avatar-img rounded-circle bg-primary"><i className="fas fa-plus text-white position-absolute top-50 start-50 translate-middle"></i></div>
                                                     </li>
                                                 </ul> */}
                                             </div>
@@ -78,44 +78,44 @@ const Category = () => {
                                         {/* Card body END */}
 
                                         {/* Card footer */}
-                                        <div class="card-footer border-top text-center p-3">
-                                            <a href={category.slug} class="btn btn-primary-soft w-100 mb-0">View posts</a>
+                                        <div className="card-footer border-top text-center p-3">
+                                            <a href={category.slug} className="btn btn-primary-soft w-100 mb-0">View posts</a>
                                         </div>
                                     </div>
                                     {/* Category item END */}
                                 </div>
                             ))
                         }
-                        <div class="col-12">
+                        <div className="col-12">
                             {/* Blog list table START */}
-                            <div class="card border bg-transparent rounded-3">
+                            <div className="card border bg-transparent rounded-3">
                                 {/* Card header START */}
-                                <div class="card-header bg-transparent border-bottom p-3">
-                                    <div class="d-sm-flex justify-content-sm-between align-items-center">
-                                        <h5 class="mb-2 mb-sm-0">Technology <span class="badge bg-primary bg-opacity-10 text-primary">105</span></h5>
-                                        <a href="#" class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Create a post</a>
+                                <div className="card-header bg-transparent border-bottom p-3">
+                                    <div className="d-sm-flex justify-content-sm-between align-items-center">
+                                        <h5 className="mb-2 mb-sm-0">Technology <span className="badge bg-primary bg-opacity-10 text-primary">105</span></h5>
+                                        <a href="#" className="btn btn-sm btn-primary mb-0"><i className="fas fa-plus me-2"></i>Create a post</a>
                                     </div>
                                 </div>
                                 {/* Card header END */}
 
                                 {/* Card body START */}
-                                <div class="card-body p-3">
+                                <div className="card-body p-3">
 
                                     {/* Search and select START */}
-                                    <div class="row g-3 align-items-center justify-content-between mb-3">
+                                    <div className="row g-3 align-items-center justify-content-between mb-3">
                                         {/* Search */}
-                                        <div class="col-md-8">
-                                            <form class="rounded position-relative">
-                                                <input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search" />
-                                                <button class="btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y" type="submit"><i class="fas fa-search fs-6 "></i></button>
+                                        <div className="col-md-8">
+                                            <form className="rounded position-relative">
+                                                <input className="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search" />
+                                                <button className="btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y" type="submit"><i className="fas fa-search fs-6 "></i></button>
                                             </form>
                                         </div>
 
                                         {/* Select option */}
-                                        <div class="col-md-3">
+                                        <div className="col-md-3">
                                             {/* Short by filter */}
                                             <form>
-                                                <select class="form-select z-index-9 bg-transparent" aria-label=".form-select-sm">
+                                                <select className="form-select z-index-9 bg-transparent" aria-label=".form-select-sm">
                                                     <option value="">Sort by</option>
                                                     <option>Free</option>
                                                     <option>Newest</option>
@@ -127,17 +127,17 @@ const Category = () => {
                                     {/* Search and select END */}
 
                                     {/* Blog list table START */}
-                                    <div class="table-responsive border-0">
-                                        <table class="table table-dark-gray align-middle p-4 mb-0 table-hover table-shrink">
+                                    <div className="table-responsive border-0">
+                                        <table className="table table-dark-gray align-middle p-4 mb-0 table-hover table-shrink">
                                             {/* Table head */}
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="border-0 rounded-start">Post Name</th>
-                                                    <th scope="col" class="border-0">Author Name</th>
-                                                    <th scope="col" class="border-0">Published Date</th>
-                                                    <th scope="col" class="border-0">Views</th>
-                                                    <th scope="col" class="border-0">Status</th>
-                                                    <th scope="col" class="border-0 rounded-end">Action</th>
+                                                    <th scope="col" className="border-0 rounded-start">Post Name</th>
+                                                    <th scope="col" className="border-0">Author Name</th>
+                                                    <th scope="col" className="border-0">Published Date</th>
+                                                    <th scope="col" className="border-0">Views</th>
+                                                    <th scope="col" className="border-0">Status</th>
+                                                    <th scope="col" className="border-0 rounded-end">Action</th>
                                                 </tr>
                                             </thead>
 
@@ -147,11 +147,11 @@ const Category = () => {
                                                 <tr>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">12 worst types of business accounts you follow on Twitter</a></h6>
+                                                        <h6 className="course-title mt-2 mt-md-0 mb-0"><a href="#">12 worst types of business accounts you follow on Twitter</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="mb-0"><a href="#">Lori Stevens</a></h6>
+                                                        <h6 className="mb-0"><a href="#">Lori Stevens</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>Jan 22, 2022</td>
@@ -159,13 +159,13 @@ const Category = () => {
                                                     <td>2,546</td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <span class="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
+                                                        <span className="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <div class="d-flex gap-2">
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                        <div className="d-flex gap-2">
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i className="bi bi-trash"></i></a>
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i className="bi bi-pencil-square"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -174,11 +174,11 @@ const Category = () => {
                                                 <tr>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">Dirty little secrets about the business industry</a></h6>
+                                                        <h6 className="course-title mt-2 mt-md-0 mb-0"><a href="#">Dirty little secrets about the business industry</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="mb-0"><a href="#">Dennis Barrett</a></h6>
+                                                        <h6 className="mb-0"><a href="#">Dennis Barrett</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>Jan 19, 2022</td>
@@ -186,13 +186,13 @@ const Category = () => {
                                                     <td>1,456</td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <span class="badge bg-warning bg-opacity-15 text-warning mb-2">Draft</span>
+                                                        <span className="badge bg-warning bg-opacity-15 text-warning mb-2">Draft</span>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <div class="d-flex gap-2">
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                        <div className="d-flex gap-2">
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i className="bi bi-trash"></i></a>
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i className="bi bi-pencil-square"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -201,11 +201,11 @@ const Category = () => {
                                                 <tr>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">7 common mistakes everyone makes while traveling</a></h6>
+                                                        <h6 className="course-title mt-2 mt-md-0 mb-0"><a href="#">7 common mistakes everyone makes while traveling</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="mb-0"><a href="#">Billy Vasquez</a></h6>
+                                                        <h6 className="mb-0"><a href="#">Billy Vasquez</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>Nov 11, 2022</td>
@@ -213,13 +213,13 @@ const Category = () => {
                                                     <td>3,456</td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <span class="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
+                                                        <span className="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <div class="d-flex gap-2">
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                        <div className="d-flex gap-2">
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i className="bi bi-trash"></i></a>
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i className="bi bi-pencil-square"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -228,11 +228,11 @@ const Category = () => {
                                                 <tr>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">5 investment doubts you should clarify</a></h6>
+                                                        <h6 className="course-title mt-2 mt-md-0 mb-0"><a href="#">5 investment doubts you should clarify</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="mb-0"><a href="#">Lori Stevens</a></h6>
+                                                        <h6 className="mb-0"><a href="#">Lori Stevens</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>Jan 22, 2022</td>
@@ -240,13 +240,13 @@ const Category = () => {
                                                     <td>5,456</td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <span class="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
+                                                        <span className="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <div class="d-flex gap-2">
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                        <div className="d-flex gap-2">
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i className="bi bi-trash"></i></a>
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i className="bi bi-pencil-square"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -255,11 +255,11 @@ const Category = () => {
                                                 <tr>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">Bad habits that people in the industry need to quit</a></h6>
+                                                        <h6 className="course-title mt-2 mt-md-0 mb-0"><a href="#">Bad habits that people in the industry need to quit</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="mb-0"><a href="#">Larry Lawson</a></h6>
+                                                        <h6 className="mb-0"><a href="#">Larry Lawson</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>Oct 21, 2022</td>
@@ -267,13 +267,13 @@ const Category = () => {
                                                     <td>2,845</td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <span class="badge bg-warning bg-opacity-10 text-warning mb-2">Draft</span>
+                                                        <span className="badge bg-warning bg-opacity-10 text-warning mb-2">Draft</span>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <div class="d-flex gap-2">
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                        <div className="d-flex gap-2">
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i className="bi bi-trash"></i></a>
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i className="bi bi-pencil-square"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -282,11 +282,11 @@ const Category = () => {
                                                 <tr>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">Around the web: 20 fabulous infographics about business</a></h6>
+                                                        <h6 className="course-title mt-2 mt-md-0 mb-0"><a href="#">Around the web: 20 fabulous infographics about business</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <h6 class="mb-0"><a href="#">Carolyn Ortiz</a></h6>
+                                                        <h6 className="mb-0"><a href="#">Carolyn Ortiz</a></h6>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>Feb 10, 2022</td>
@@ -294,13 +294,13 @@ const Category = () => {
                                                     <td>1,456</td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <span class="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
+                                                        <span className="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
                                                     </td>
                                                     {/* Table data */}
                                                     <td>
-                                                        <div class="d-flex gap-2">
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                                                            <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                        <div className="d-flex gap-2">
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i className="bi bi-trash"></i></a>
+                                                            <a href="#" className="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i className="bi bi-pencil-square"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -312,21 +312,21 @@ const Category = () => {
                                     {/* Blog list table END */}
 
                                     {/* Pagination START */}
-                                    <div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">
+                                    <div className="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">
                                         {/* Content */}
-                                        <p class="mb-sm-0 text-center text-sm-start">Showing 1 to 8 of 20 entries</p>
+                                        <p className="mb-sm-0 text-center text-sm-start">Showing 1 to 8 of 20 entries</p>
                                         {/* Pagination */}
-                                        <nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
-                                            <ul class="pagination pagination-sm pagination-bordered mb-0">
-                                                <li class="page-item disabled">
-                                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+                                        <nav className="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
+                                            <ul className="pagination pagination-sm pagination-bordered mb-0">
+                                                <li className="page-item disabled">
+                                                    <a className="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
                                                 </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item disabled"><a class="page-link" href="#">..</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#">Next</a>
+                                                <li className="page-item"><a className="page-link" href="#">1</a></li>
+                                                <li className="page-item active"><a className="page-link" href="#">2</a></li>
+                                                <li className="page-item disabled"><a className="page-link" href="#">..</a></li>
+                                                <li className="page-item"><a className="page-link" href="#">15</a></li>
+                                                <li className="page-item">
+                                                    <a className="page-link" href="#">Next</a>
                                                 </li>
                                             </ul>
                                         </nav>

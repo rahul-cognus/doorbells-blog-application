@@ -2,83 +2,83 @@ import React from 'react'
 
 const EditBlog = () => {
     return (
-        <section class="py-4">
-            <div class="container">
-                <div class="row pb-4">
-                    <div class="col-12">
+        <section className="py-4">
+            <div className="container">
+                <div className="row pb-4">
+                    <div className="col-12">
                         {/* Title */}
-                        <h1 class="mb-0 h2">Edit post</h1>
+                        <h1 className="mb-0 h2">Edit post</h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
+                <div className="row">
+                    <div className="col-12">
                         {/* Chart START */}
-                        <div class="card border h-100">
+                        <div className="card border h-100">
                             {/* Card body */}
-                            <div class="card-body">
+                            <div className="card-body">
                                 {/* Form START */}
                                 <form>
                                     {/* Main form */}
-                                    <div class="row">
-                                        <div class="col-12">
+                                    <div className="row">
+                                        <div className="col-12">
                                             {/* Post name */}
-                                            <div class="mb-3">
-                                                <label class="form-label">Post name</label>
-                                                <input required id="con-name" name="name" type="text" class="form-control" value="Ten tell-tale signs you need to get a new startup." />
+                                            <div className="mb-3">
+                                                <label className="form-label">Post name</label>
+                                                <input required id="con-name" name="name" type="text" className="form-control" value="Ten tell-tale signs you need to get a new startup." />
                                                 <small>Moving heaven divide two sea female great midst spirit</small>
                                             </div>
                                         </div>
                                         {/* Post type START */}
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Post type</label>
-                                                <div class="d-flex flex-wrap gap-3">
+                                        <div className="col-12">
+                                            <div className="mb-3">
+                                                <label className="form-label">Post type</label>
+                                                <div className="d-flex flex-wrap gap-3">
                                                     {/* Post type item */}
-                                                    <div class="flex-fill">
-                                                        <input type="radio" class="btn-check" name="poll" id="option" checked />
-                                                        <label class="btn btn-outline-light w-100" for="option">
-                                                            <i class="bi bi-chat-left-text fs-1"></i>
-                                                            <span class="d-block"> Post </span>
+                                                    <div className="flex-fill">
+                                                        <input type="radio" className="btn-check" name="poll" id="option" checked />
+                                                        <label className="btn btn-outline-light w-100" for="option">
+                                                            <i className="bi bi-chat-left-text fs-1"></i>
+                                                            <span className="d-block"> Post </span>
                                                         </label>
                                                     </div>
                                                     {/* Post type item */}
-                                                    <div class="flex-fill">
-                                                        <input type="radio" class="btn-check" name="poll" id="option2" />
-                                                        <label class="btn btn-outline-light w-100" for="option2">
-                                                            <i class="bi bi-patch-question fs-1"></i>
-                                                            <span class="d-block"> Question </span>
+                                                    <div className="flex-fill">
+                                                        <input type="radio" className="btn-check" name="poll" id="option2" />
+                                                        <label className="btn btn-outline-light w-100" for="option2">
+                                                            <i className="bi bi-patch-question fs-1"></i>
+                                                            <span className="d-block"> Question </span>
                                                         </label>
                                                     </div>
                                                     {/* Post type item */}
-                                                    <div class="flex-fill">
-                                                        <input type="radio" class="btn-check" name="poll" id="option3" />
-                                                        <label class="btn btn-outline-light w-100" for="option3">
-                                                            <i class="bi bi-chat-right-dots fs-1"></i>
-                                                            <span class="d-block"> Poll </span>
+                                                    <div className="flex-fill">
+                                                        <input type="radio" className="btn-check" name="poll" id="option3" />
+                                                        <label className="btn btn-outline-light w-100" for="option3">
+                                                            <i className="bi bi-chat-right-dots fs-1"></i>
+                                                            <span className="d-block"> Poll </span>
                                                         </label>
                                                     </div>
                                                     {/* Post type item */}
-                                                    <div class="flex-fill">
-                                                        <input type="radio" class="btn-check" name="poll" id="option4" />
-                                                        <label class="btn btn-outline-light w-100" for="option4">
-                                                            <i class="bi bi-ui-checks-grid fs-1"></i>
-                                                            <span class="d-block"> Images </span>
+                                                    <div className="flex-fill">
+                                                        <input type="radio" className="btn-check" name="poll" id="option4" />
+                                                        <label className="btn btn-outline-light w-100" for="option4">
+                                                            <i className="bi bi-ui-checks-grid fs-1"></i>
+                                                            <span className="d-block"> Images </span>
                                                         </label>
                                                     </div>
                                                     {/* Post type item */}
-                                                    <div class="flex-fill">
-                                                        <input type="radio" class="btn-check" name="poll" id="option5" />
-                                                        <label class="btn btn-outline-light w-100" for="option5">
-                                                            <i class="bi bi-camera-reels fs-1"></i>
-                                                            <span class="d-block"> Video </span>
+                                                    <div className="flex-fill">
+                                                        <input type="radio" className="btn-check" name="poll" id="option5" />
+                                                        <label className="btn btn-outline-light w-100" for="option5">
+                                                            <i className="bi bi-camera-reels fs-1"></i>
+                                                            <span className="d-block"> Video </span>
                                                         </label>
                                                     </div>
                                                     {/* Post type item */}
-                                                    <div class="flex-fill">
-                                                        <input type="radio" class="btn-check" name="poll" id="option6" />
-                                                        <label class="btn btn-outline-light w-100" for="option6">
-                                                            <i class="bi bi-chat-square fs-1"></i>
-                                                            <span class="d-block"> Other </span>
+                                                    <div className="flex-fill">
+                                                        <input type="radio" className="btn-check" name="poll" id="option6" />
+                                                        <label className="btn btn-outline-light w-100" for="option6">
+                                                            <i className="bi bi-chat-square fs-1"></i>
+                                                            <span className="d-block"> Other </span>
                                                         </label>
                                                     </div>
                                                     {/* Post type item */}
@@ -88,52 +88,52 @@ const EditBlog = () => {
                                         {/* Post type END */}
 
                                         {/* Short description */}
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Short description </label>
-                                                <textarea class="form-control" rows="3">For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do.</textarea>
+                                        <div className="col-12">
+                                            <div className="mb-3">
+                                                <label className="form-label">Short description </label>
+                                                <textarea className="form-control" rows="3">For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do.</textarea>
                                             </div>
                                         </div>
 
                                         {/* Main toolbar */}
-                                        <div class="col-md-12">
+                                        <div className="col-md-12">
                                             {/* Subject */}
-                                            <div class="mb-3">
-                                                <label class="form-label">Post body</label>
+                                            <div className="mb-3">
+                                                <label className="form-label">Post body</label>
                                                 {/* Editor toolbar */}
-                                                <div class="bg-light border border-bottom-0 rounded-top py-3" id="quilltoolbar">
-                                                    <span class="ql-formats">
-                                                        <select class="ql-size"></select>
+                                                <div className="bg-light border border-bottom-0 rounded-top py-3" id="quilltoolbar">
+                                                    <span className="ql-formats">
+                                                        <select className="ql-size"></select>
                                                     </span>
-                                                    <span class="ql-formats">
-                                                        <button class="ql-bold"></button>
-                                                        <button class="ql-italic"></button>
-                                                        <button class="ql-underline"></button>
-                                                        <button class="ql-strike"></button>
+                                                    <span className="ql-formats">
+                                                        <button className="ql-bold"></button>
+                                                        <button className="ql-italic"></button>
+                                                        <button className="ql-underline"></button>
+                                                        <button className="ql-strike"></button>
                                                     </span>
-                                                    <span class="ql-formats">
-                                                        <select class="ql-color"></select>
-                                                        <select class="ql-background"></select>
+                                                    <span className="ql-formats">
+                                                        <select className="ql-color"></select>
+                                                        <select className="ql-background"></select>
                                                     </span>
-                                                    <span class="ql-formats">
-                                                        <button class="ql-code-block"></button>
+                                                    <span className="ql-formats">
+                                                        <button className="ql-code-block"></button>
                                                     </span>
-                                                    <span class="ql-formats">
-                                                        <button class="ql-list" value="ordered"></button>
-                                                        <button class="ql-list" value="bullet"></button>
-                                                        <button class="ql-indent" value="-1"></button>
-                                                        <button class="ql-indent" value="+1"></button>
+                                                    <span className="ql-formats">
+                                                        <button className="ql-list" value="ordered"></button>
+                                                        <button className="ql-list" value="bullet"></button>
+                                                        <button className="ql-indent" value="-1"></button>
+                                                        <button className="ql-indent" value="+1"></button>
                                                     </span>
-                                                    <span class="ql-formats">
-                                                        <button class="ql-link"></button>
-                                                        <button class="ql-image"></button>
+                                                    <span className="ql-formats">
+                                                        <button className="ql-link"></button>
+                                                        <button className="ql-image"></button>
                                                     </span>
-                                                    <span class="ql-formats">
-                                                        <button class="ql-clean"></button>
+                                                    <span className="ql-formats">
+                                                        <button className="ql-clean"></button>
                                                     </span>
                                                 </div>
                                                 {/* Main toolbar */}
-                                                <div class="bg-body border rounded-bottom h-300 overflow-hidden" id="quilleditor">
+                                                <div className="bg-body border rounded-bottom h-300 overflow-hidden" id="quilleditor">
                                                     <h2>Demesne far hearted suppose venture excited see had has.</h2>
                                                     <br />
                                                     <p>Demesne far hearted suppose venture excited see had has. Dependent on so extremely delivered by. Yet no jokes worse her why. Bed one supposing breakfast day fulfilled off depending questions. <b>The exercise of. Up attempt offered ye civilly so sitting to. She new course gets living within Elinor joy. She rapturous suffering concealed. </b> Whatever boy her exertion his extended. Ecstatic followed handsome drawings entirely Mrs one yet outweigh. Of acceptance insipidity remarkably is an invitation. </p>
@@ -155,43 +155,43 @@ const EditBlog = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 mt-4">
-                                            <div class="mb-3">
+                                        <div className="col-12 mt-4">
+                                            <div className="mb-3">
                                                 {/* Image */}
-                                                <div class="row align-items-center mb-2">
-                                                    <div class="col-4 col-md-2">
-                                                        <div class="position-relative">
-                                                            <img class="rounded" src="assets/images/blog/3by2/07.jpg" alt="" />
-                                                            <div class="position-absolute top-0 end-0 mt-n2 me-n2">
-                                                                <a class="btn btn-icon btn-xs btn-danger" href="#"><i class="bi bi-x"></i></a>
+                                                <div className="row align-items-center mb-2">
+                                                    <div className="col-4 col-md-2">
+                                                        <div className="position-relative">
+                                                            <img className="rounded" src="assets/images/blog/3by2/07.jpg" alt="" />
+                                                            <div className="position-absolute top-0 end-0 mt-n2 me-n2">
+                                                                <a className="btn btn-icon btn-xs btn-danger" href="#"><i className="bi bi-x"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-8 col-md-10 position-relative">
-                                                        <h6 class="my-2">Edit blog image </h6>
-                                                        <label class="w-100" style={{ cursor: 'pointer' }}>
+                                                    <div className="col-sm-8 col-md-10 position-relative">
+                                                        <h6 className="my-2">Edit blog image </h6>
+                                                        <label className="w-100" style={{ cursor: 'pointer' }}>
                                                             <span>
-                                                                <input class="form-control stretched-link" type="file" name="my-image" id="image" accept="image/gif, image/jpeg, image/png" />
+                                                                <input className="form-control stretched-link" type="file" name="my-image" id="image" accept="image/gif, image/jpeg, image/png" />
                                                             </span>
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG and PNG. Our suggested dimensions are 600px * 450px. Larger image will be cropped to 4:3 to fit our thumbnails/previews.</p>
+                                                <p className="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG and PNG. Our suggested dimensions are 600px * 450px. Larger image will be cropped to 4:3 to fit our thumbnails/previews.</p>
                                             </div>
                                         </div>
-                                        <div class="col-lg-7">
+                                        <div className="col-lg-7">
                                             {/* Tags */}
-                                            <div class="mb-3">
-                                                <label class="form-label">Tags</label>
-                                                <textarea class="form-control" rows="1">business, sports, traveling</textarea>
+                                            <div className="mb-3">
+                                                <label className="form-label">Tags</label>
+                                                <textarea className="form-control" rows="1">business, sports, traveling</textarea>
                                                 <small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing.</small>
                                             </div>
                                         </div>
-                                        <div class="col-lg-5">
+                                        <div className="col-lg-5">
                                             {/* Message */}
-                                            <div class="mb-3">
-                                                <label class="form-label">Category</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                            <div className="mb-3">
+                                                <label className="form-label">Category</label>
+                                                <select className="form-select" aria-label="Default select example">
                                                     <option selected>Travel</option>
                                                     <option value="1">Lifestyle</option>
                                                     <option value="2">Business</option>
@@ -202,18 +202,18 @@ const EditBlog = () => {
                                             </div>
                                         </div>
                                         {/* Checkbox */}
-                                        <div class="col-12">
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="checkbox" value="" id="postCheck" />
-                                                <label class="form-check-label" for="postCheck">
+                                        <div className="col-12">
+                                            <div className="form-check mb-3">
+                                                <input className="form-check-input" type="checkbox" value="" id="postCheck" />
+                                                <label className="form-check-label" for="postCheck">
                                                     Make this post featured?
                                                 </label>
                                             </div>
                                         </div>
                                         {/* Crate post button */}
-                                        <div class="col-md-12 text-start">
-                                            <button class="btn btn-primary" type="submit">Save change</button>
-                                            <button class="btn btn-danger" type="submit">Delete post</button>
+                                        <div className="col-md-12 text-start">
+                                            <button className="btn btn-primary" type="submit">Save change</button>
+                                            <button className="btn btn-danger" type="submit">Delete post</button>
                                         </div>
                                     </div>
                                 </form>
