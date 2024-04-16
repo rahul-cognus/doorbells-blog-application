@@ -9,6 +9,8 @@ const BlogSettings = require("../models/blogSetting");
 const resolvers = {
   Query: {
     getArticleById: async (_, { id }) => await Article.findById(id),
+    getArticleBySlug: async (_, { display_url }) =>
+      await Article.findOne({ display_url }).populate("categories"),
     getAllArticles: async () => await Article.find(),
     getCategoryById: async (_, { id }) => await Category.findById(id),
     getAllCategories: async () => await Category.find(),

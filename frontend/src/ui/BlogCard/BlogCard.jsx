@@ -1,9 +1,37 @@
+"use client"
 import React from 'react'
+import { gql, useQuery } from '@apollo/client';
 
-const BlogCard = () => {
+
+const GET_ARTICLEBYSLUG = gql`
+ query GetArticleBySlug($displayUrl: String!) {
+  getArticleBySlug(display_url: $displayUrl) {
+    _id
+    title
+    description
+    content
+    display_url
+    image_url
+    number_of_likes
+    number_of_comments
+    created_at
+    updated_at
+  }
+}
+`;
+
+const BlogCard = ({ blogSlug }) => {
+    const { loading, error, data } = useQuery(GET_ARTICLEBYSLUG, {
+        variables: { getArticleBySlug: '{blogSlug}' },
+    });
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+    const content = JSON.parse(data.getArticleById.content);
+    console.log(content);
     return (
         <main>
-
+            <h1>{blogSlug}</h1>
             {/* =======================Inner intro START */}
             <section className="bg-dark-overlay-4" style={{
                 backgroundImage: "url(/images/blog/16by9/big/02.jpg)",

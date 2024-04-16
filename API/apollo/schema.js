@@ -91,6 +91,7 @@ const typeDefs = gql`
 
   type Query {
     getArticleById(id: ID!): Article
+    getArticleBySlug(display_url: String!): Article
     getAllArticles: [Article]
     getCategoryById(id: ID!): Category
     getAllCategories: [Category]
