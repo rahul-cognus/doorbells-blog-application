@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import useTheme from '@/hooks/useTheme';
 import { websiteURL } from '@/constant/constant';
+import { gql, useQuery } from '@apollo/client';
 
 
 // CSS Plugin
@@ -14,7 +15,16 @@ import "@/public/vendor/plyr/plyr.css"
 
 
 
-
+const GET_CATEGORIES = gql`
+  query GetAllCategories {
+    getAllCategories {
+      _id
+      name
+      description
+      slug
+    }
+  }
+`;
 const Header = () => {
 
 	// const [isChecked, setIsChecked] = useState(false);
@@ -60,6 +70,11 @@ const Header = () => {
 	useEffect(() => {
 		document.documentElement.setAttribute('data-bs-theme', theme);
 	}, [theme]);
+
+	const { loading, error, data } = useQuery(GET_CATEGORIES);
+
+	if (loading) return <p>Loading...</p>;
+	if (error) return <p>Error: {error.message}</p>;
 	return (
 		<>
 			<header className="navbar-light navbar-sticky header-static">
@@ -274,6 +289,18 @@ const Header = () => {
 												<i className="text-success fa-fw bi bi-cloud-download-fill me-2"></i>Buy blogzine!
 											</a>
 										</li>
+									</ul>
+								</li>
+								{/* Category */}
+								<li className="nav-item dropdown">
+									<a className="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+									<ul className="dropdown-menu" aria-labelledby="pagesMenu">
+										{
+											data.getAllCategories.map((category, index) => (
+												<li> <Link key={index} className="dropdown-item" href={category.slug}>{category.name}</Link></li>
+											))
+										}
+
 									</ul>
 								</li>
 
