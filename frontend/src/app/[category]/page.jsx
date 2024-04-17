@@ -1,6 +1,44 @@
+"use client"
 import React from 'react'
+import { gql, useQuery } from '@apollo/client';
 
+const GET_CATEGORIES = gql`
+  query GetAllArticles {
+  getAllArticles {
+    _id
+    title
+    description
+    content
+    display_url
+    image_url
+    number_of_likes
+    number_of_comments
+    created_at
+    updated_at
+    tags {
+      _id
+    }
+    categories {
+      _id
+    }
+    author {
+      _id
+    }
+  }
+  getAllCategories {
+    _id
+    name
+    description
+    slug
+  }
+}
+`;
 const Category = ({ params }) => {
+    const { loading, error, data } = useQuery(GET_CATEGORIES);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+    console.log(data)
     return (
         <>
             <section className="pt-4">
