@@ -5,8 +5,8 @@ const typeDefs = gql`
     author: User
     title: String!
     description: String!
-    categories: [Category]!
-    content: [String]!
+    categories: [Category!]
+    content: [String!]
     display_url: String!
     image_url: String
     tags: [Tag]

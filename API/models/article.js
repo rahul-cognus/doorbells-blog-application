@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-
+const Users = require("./user");
+const Category = require("./category");
+const Tag = require("./tag");
 const articleSchema = new mongoose.Schema(
   {
     author: {
