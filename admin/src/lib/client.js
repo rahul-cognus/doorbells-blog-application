@@ -21,9 +21,9 @@ import {
   createUploadLink,
 } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
-
+require("dotenv").config();
 const uploadLink = createUploadLink({
-  uri: "http://your-api-server-url/graphql", // Replace with your GraphQL server URL
+  uri: "http://localhost:4000/graphql", // Replace with your GraphQL server URL
 });
 
 export const { getClient } = registerApolloClient(() => {

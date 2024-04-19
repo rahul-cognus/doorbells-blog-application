@@ -33,12 +33,19 @@ const CREATE_ARTICLE = gql`
     }
   }
 `;
+const UPLOAD_IMAGE = gql`
+  mutation UploadImage($file: Upload!) {
+    uploadImage(file: $file)
+  }
+`;
+
 const CreateBlog = () => {
     const [editorData, setEditorData] = useState(null);
     const [createArticle] = useMutation(CREATE_ARTICLE);
     const [createData, setCreateData] = useState(null);
     const [slug, setSlug] = useState(""); // Define slug state
     const { loading, error, data } = useQuery(GET_CATEGORIES);
+    const [uploadImage] = useMutation(UPLOAD_IMAGE);
 
     const handleEditorDataChange = async (dataPromise) => {
         const data = await dataPromise;
@@ -48,8 +55,8 @@ const CreateBlog = () => {
     };
 
 
-    const handleFormData = (e) => {
-        const { name, value } = e.target;
+    const handleFormData = async (e) => {
+        const { name, value, files } = e.target;
 
         setCreateData((prevCreateData) => ({
             ...prevCreateData,
@@ -59,19 +66,55 @@ const CreateBlog = () => {
         if (name === 'title' || name === 'slug')
             setSlug(value.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
 
-        if (name === "image") {
-            const file = e?.target?.files[0];
-            // setImage(URL.createObjectURL(file));
+        if (name === "image_url") {
+            const file = files[0];
+            const formData = new FormData();
+            formData.append('file', file);
 
-            setCreateData((prevCreateData) => ({
-                ...prevCreateData,
-                image: file,
-            }));
+            try {
+                // Call the uploadImage mutation
+                const { data } = await uploadImage({
+                    variables: {
+                        file: file,
+                    },
+                });
+                // Verify that the data object and uploadImage field are present
+                if (data && data.uploadImage) {
+                    const imageUrl = data.uploadImage;
+                    // Set the imageUrl in the state
+                    setCreateData((prevCreateData) => ({
+                        ...prevCreateData,
+                        image_url: imageUrl,
+                    }));
+                    console.log("if statement reuning")
+                } else {
+                    console.error("Invalid response from uploadImage mutation:", data);
+                    // Handle invalid response or missing uploadImage field
+                    console.log("else statement reuning")
+                }
+            } catch (error) {
+                // console.log('file', file)
+                console.error("Error uploading image:", error);
+            }
+
+            // const { data } = uploadImage({
+            //     variables: {
+            //         file: file,
+            //     },
+            // });
+            // const imageUrl = data.uploadImage;
+            // console.log(imageUrl)
+            // setImage(URL.createObjectURL(file));
+            // console.log(file);
+            // setCreateData((prevCreateData) => ({
+            //     ...prevCreateData,
+            //     // image: file,
+            // }));
         }
         console.log(name, value);
     }
-
-
+    console.log(createData);
+    // console.log(createData.image);
     const handleSave = async (e) => {
         e.preventDefault();
         // const title = e.target.title.value;
@@ -94,7 +137,7 @@ const CreateBlog = () => {
                         categories: createData.categories,
                         content: JSON.stringify(editorData),
                         display_url: slug,
-                        image_url: createData.image,
+                        image_url: createData.imageUrl,
                         // tags: createData.tags ? createData.tags.split(',') : "",
                     },
                 },
