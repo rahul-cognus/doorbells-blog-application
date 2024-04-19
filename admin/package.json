@@ -29,6 +29,7 @@
     "@editorjs/simple-image": "^1.6.0",
     "@editorjs/table": "^2.3.0",
     "@editorjs/warning": "^1.4.0",
+    "apollo-upload-client": "^18.0.1",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "editorjs-text-color-plugin": "^2.0.4",

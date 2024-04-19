@@ -21,14 +21,14 @@ const GET_ARTICLEBYSLUG = gql`
 `;
 
 const BlogCard = ({ blogSlug }) => {
-    const { loading, error, data } = useQuery(GET_ARTICLEBYSLUG, {
-        variables: { getArticleBySlug: '{blogSlug}' },
-    });
+    // const { loading, error, data } = useQuery(GET_ARTICLEBYSLUG, {
+    //     variables: { getArticleBySlug: '{blogSlug}' },
+    // });
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
-    const content = JSON.parse(data.getArticleById.content);
-    console.log(content);
+    // if (loading) return <p>Loading...</p>;
+    // if (error) return <p>Error: {error.message}</p>;
+    // const content = JSON.parse(data.getArticleById.content);
+    // console.log(content);
     return (
         <main>
             <h1>{blogSlug}</h1>
