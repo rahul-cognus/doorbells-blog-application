@@ -66,50 +66,65 @@ const CreateBlog = () => {
         if (name === 'title' || name === 'slug')
             setSlug(value.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
 
-        if (name === "image_url") {
+        // if (name === "image_url") {
+        //     const file = files[0];
+        //     const formData = new FormData();
+        //     formData.append('file', file);
+
+        //     // try {
+        //     // Call the uploadImage mutation
+        //     const { data } = await uploadImage({
+        //         variables: {
+        //             file: file,
+        //         },
+        //     });
+        //     // Verify that the data object and uploadImage field are present
+        //     if (data && data.uploadImage) {
+        //         const imageUrl = data.uploadImage;
+        //         // Set the imageUrl in the state
+        //         setCreateData((prevCreateData) => ({
+        //             ...prevCreateData,
+        //             image_url: imageUrl,
+        //         }));
+        //         console.log("if statement reuning")
+        //     } else {
+        //         console.error("Invalid response from uploadImage mutation:", data);
+        //         // Handle invalid response or missing uploadImage field
+        //         console.log("else statement reuning")
+        //     }
+        //     // } catch (error) {
+        //     //     // console.log('file', file)
+        //     //     console.error("Error uploading image:", error);
+        //     // }
+
+        //     // const { data } = uploadImage({
+        //     //     variables: {
+        //     //         file: file,
+        //     //     },
+        //     // });
+        //     // const imageUrl = data.uploadImage;
+        //     // console.log(imageUrl)
+        //     // setImage(URL.createObjectURL(file));
+        //     // console.log(file);
+        //     // setCreateData((prevCreateData) => ({
+        //     //     ...prevCreateData,
+        //     //     // image: file,
+        //     // }));
+        // }
+        if (name === "image_url" && files.length > 0) {
             const file = files[0];
             const formData = new FormData();
             formData.append('file', file);
-
-            // try {
-            // Call the uploadImage mutation
-            const { data } = await uploadImage({
-                variables: {
-                    file: file,
-                },
-            });
-            // Verify that the data object and uploadImage field are present
-            if (data && data.uploadImage) {
-                const imageUrl = data.uploadImage;
-                // Set the imageUrl in the state
-                setCreateData((prevCreateData) => ({
-                    ...prevCreateData,
-                    image_url: imageUrl,
-                }));
-                console.log("if statement reuning")
-            } else {
-                console.error("Invalid response from uploadImage mutation:", data);
-                // Handle invalid response or missing uploadImage field
-                console.log("else statement reuning")
+            try {
+                const { data } = await uploadImage({ variables: { file: formData } });
+                console.log("Image uploaded successfully:", data.uploadImage);
+                // setCreateData((prevCreateData) => ({
+                //     ...prevCreateData,
+                //     image_url: imageUrl,
+                // }));
+            } catch (error) {
+                console.error("Error uploading image:", error);
             }
-            // } catch (error) {
-            //     // console.log('file', file)
-            //     console.error("Error uploading image:", error);
-            // }
-
-            // const { data } = uploadImage({
-            //     variables: {
-            //         file: file,
-            //     },
-            // });
-            // const imageUrl = data.uploadImage;
-            // console.log(imageUrl)
-            // setImage(URL.createObjectURL(file));
-            // console.log(file);
-            // setCreateData((prevCreateData) => ({
-            //     ...prevCreateData,
-            //     // image: file,
-            // }));
         }
         console.log(name, value);
     }
@@ -230,7 +245,7 @@ const CreateBlog = () => {
                                                         </span>
                                                     </label>
                                                 </div>
-                                                <p className="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG and PNG. Our suggested dimensions are 600px * 450px. Larger image will be cropped to 4:3 to fit our thumbnails/previews.</p>
+                                                <p className="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG and PNG. Our suggested dimensions are 37.5rem * 28.125rem. Larger image will be cropped to 4:3 to fit our thumbnails/previews.</p>
                                             </div>
                                         </div>
                                         <div className="col-lg-7">
