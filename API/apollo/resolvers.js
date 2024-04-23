@@ -1,17 +1,29 @@
-const Article = require("../models/article");
-const Users = require("../models/user");
-const Category = require("../models/category");
-const Comment = require("../models/comment");
-const Like = require("../models/like");
-const Tag = require("../models/tag");
-const BlogSettings = require("../models/blogSetting");
+import Article from "../models/article.mjs";
+import Users from "../models/user.mjs";
+import Category from "../models/category.mjs";
+import Comments from "../models/comment.mjs";
+import Like from "../models/like.mjs";
+import Tag from "../models/tag.mjs";
+import BlogSettings from "../models/blogSetting.mjs";
+// const Article = require("../models/article");
+// const Users = require("../models/user");
+// const Category = require("../models/category");
+// const Comment = require("../models/comment");
+// const Like = require("../models/like");
+// const Tag = require("../models/tag.mjs");
+// const BlogSettings = require("../models/blogSetting.mjs");
 // const upload = require("../s3.config");
-const { GraphQLUpload } = require("apollo-upload-server");
+// const { GraphQLUpload } = require("graphql-upload");
+import GraphQLUpload from "graphql-upload/GraphQLUpload.mjs";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { createReadStream } from "fs";
+import { v4 as uuidv4 } from "uuid";
+import { Readable } from "stream";
 // const AWS = require("aws-sdk");
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
-const { createReadStream } = require("fs");
-const { v4: uuidv4 } = require("uuid");
-const { Readable } = require("stream");
+// const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+// const { createReadStream } = require("fs");
+// const { v4: uuidv4 } = require("uuid");
+// const { Readable } = require("stream");
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION,
@@ -35,9 +47,9 @@ const resolvers = {
     getAllArticles: async () => await Article.find().populate("categories"),
     getCategoryById: async (_, { id }) => await Category.findById(id),
     getAllCategories: async () => await Category.find(),
-    getCommentById: async (_, { id }) => await Comment.findById(id),
+    getCommentById: async (_, { id }) => await Comments.findById(id),
     getCommentsByArticle: async (_, { articleId }) =>
-      await Comment.find({ article: articleId }),
+      await Comments.find({ article: articleId }),
     getLikeById: async (_, { id }) => await Like.findById(id),
     getLikesByArticle: async (_, { articleId }) =>
       await Like.find({ article: articleId }),
@@ -52,42 +64,19 @@ const resolvers = {
           throw new Error("No file provided");
         }
         console.log("File:", file);
-        const { filename, mimetype } = file;
-        // const { createReadStream, filename, mimetype } = await file;
-        // console.log("createReadStream:", createReadStream);
-        // const stream = createReadStream();
-        // const key = `uploads/${uuidv4()}-${filename}`;
+        // const { filename, mimetype } = file;
+        const { createReadStream, filename, mimetype } = await file;
+        console.log("createReadStream:", createReadStream);
+        const stream = createReadStream();
         const objectKey = `uploads/${uuidv4()}-${filename}`;
-        // const uploadParams = {
-        //   Bucket: process.env.S3_BUCKET_NAME,
-        //   Key: objectKey,
-        //   Body: stream,
-        //   ContentType: mimetype,
-        // };
-        if (typeof file.createReadStream === "function") {
-          const stream = file.createReadStream(); // Create stream if available
-          const uploadParams = {
-            Bucket: process.env.S3_BUCKET_NAME,
-            Key: objectKey,
-            Body: stream,
-            ContentType: mimetype,
-          };
-          const command = new PutObjectCommand(uploadParams);
-          const response = await s3Client.send(command);
-          return response.Location;
-        } else {
-          throw new Error("Error accessing uploaded file"); // More specific error
-        }
-        // const params = {
-        //   Bucket: process.env.S3_BUCKET_NAME,
-        //   Key: key,
-        //   Body: stream,
-        //   ContentType: mimetype,
-        // };
+        const uploadParams = {
+          Bucket: process.env.S3_BUCKET_NAME,
+          Key: objectKey,
+          Body: stream,
+          ContentType: mimetype,
+        };
         const command = new PutObjectCommand(uploadParams);
         const response = await s3Client.send(command);
-        // const { Location } = await s3.upload(params).promise();
-        // return Location;
         return response.Location;
       } catch (error) {
         console.log("File:", file);
@@ -108,10 +97,10 @@ const resolvers = {
     updateUser: async (_, { id, input }) =>
       await Users.findByIdAndUpdate(id, input, { new: true }),
     deleteUser: async (_, { id }) => await Users.findByIdAndDelete(id),
-    createComment: async (_, { input }) => await Comment.create(input),
+    createComment: async (_, { input }) => await Comments.create(input),
     updateComment: async (_, { id, input }) =>
-      await Comment.findByIdAndUpdate(id, input, { new: true }),
-    deleteComment: async (_, { id }) => await Comment.findByIdAndDelete(id),
+      await Comments.findByIdAndUpdate(id, input, { new: true }),
+    deleteComment: async (_, { id }) => await Comments.findByIdAndDelete(id),
     createLike: async (_, { input }) => await Like.create(input),
     deleteLike: async (_, { id }) => await Like.findByIdAndDelete(id),
     createTag: async (_, { input }) => await Tag.create(input),
@@ -131,4 +120,4 @@ const resolvers = {
   },
 };
 
-module.exports = resolvers;
+export default resolvers;

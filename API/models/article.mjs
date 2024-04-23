@@ -1,7 +1,11 @@
-const mongoose = require("mongoose");
-const Users = require("./user");
-const Category = require("./category");
-const Tag = require("./tag");
+import { mongoose } from "mongoose";
+import Users from "./user.mjs";
+import Category from "./category.mjs";
+import Tag from "./tag.mjs";
+// const Users = require("./user");
+// const mongoose = require("mongoose");
+// const Category = require("./category.mjs");
+// const Tag = require("./tag");
 const articleSchema = new mongoose.Schema(
   {
     author: {
@@ -45,4 +49,6 @@ const articleSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Articles", articleSchema);
+const Article = mongoose.model("Articles", articleSchema);
+
+export default Article;

@@ -71,31 +71,31 @@ const CreateBlog = () => {
             const formData = new FormData();
             formData.append('file', file);
 
-            try {
-                // Call the uploadImage mutation
-                const { data } = await uploadImage({
-                    variables: {
-                        file: file,
-                    },
-                });
-                // Verify that the data object and uploadImage field are present
-                if (data && data.uploadImage) {
-                    const imageUrl = data.uploadImage;
-                    // Set the imageUrl in the state
-                    setCreateData((prevCreateData) => ({
-                        ...prevCreateData,
-                        image_url: imageUrl,
-                    }));
-                    console.log("if statement reuning")
-                } else {
-                    console.error("Invalid response from uploadImage mutation:", data);
-                    // Handle invalid response or missing uploadImage field
-                    console.log("else statement reuning")
-                }
-            } catch (error) {
-                // console.log('file', file)
-                console.error("Error uploading image:", error);
+            // try {
+            // Call the uploadImage mutation
+            const { data } = await uploadImage({
+                variables: {
+                    file: file,
+                },
+            });
+            // Verify that the data object and uploadImage field are present
+            if (data && data.uploadImage) {
+                const imageUrl = data.uploadImage;
+                // Set the imageUrl in the state
+                setCreateData((prevCreateData) => ({
+                    ...prevCreateData,
+                    image_url: imageUrl,
+                }));
+                console.log("if statement reuning")
+            } else {
+                console.error("Invalid response from uploadImage mutation:", data);
+                // Handle invalid response or missing uploadImage field
+                console.log("else statement reuning")
             }
+            // } catch (error) {
+            //     // console.log('file', file)
+            //     console.error("Error uploading image:", error);
+            // }
 
             // const { data } = uploadImage({
             //     variables: {

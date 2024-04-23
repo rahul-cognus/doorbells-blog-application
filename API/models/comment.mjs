@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+import { mongoose } from "mongoose";
+// const mongoose = require("mongoose");
 
-const likeSchema = new mongoose.Schema(
+const commentSchema = new mongoose.Schema(
   {
     article: {
       type: mongoose.Schema.Types.ObjectId,
@@ -20,6 +21,7 @@ const likeSchema = new mongoose.Schema(
         image_url: { type: String },
       },
     },
+    content: { type: String, required: [true, "Content is required"] },
   },
   {
     timestamps: {
@@ -29,4 +31,5 @@ const likeSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Likes", likeSchema);
+const Comments = mongoose.model("Comments", commentSchema);
+export default Comments;

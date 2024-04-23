@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import { mongoose } from "mongoose";
 const blogSettingsSchema = new mongoose.Schema({
   siteTitle: { type: String, required: true },
   siteDescription: { type: String },
@@ -10,4 +10,5 @@ const blogSettingsSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("BlogSettings", blogSettingsSchema);
+const BlogSettings = mongoose.model("BlogSettings", blogSettingsSchema);
+export default BlogSettings;

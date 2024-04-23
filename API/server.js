@@ -1,5 +1,7 @@
-const app = require("./apolloServer");
-const mongoose = require("mongoose");
+import app from "./apolloServer.mjs";
+import { mongoose } from "mongoose";
+// const app = require("./apolloServer.mjs");
+// const mongoose = require("mongoose");
 
 mongoose
   .connect("mongodb://localhost:27017/doorbells-database", {
