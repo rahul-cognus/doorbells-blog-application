@@ -1,8 +1,16 @@
-"use client"
+"use server"
 import React from 'react'
 import Link from 'next/link';
 import { gql, useQuery } from '@apollo/client';
+import { getClient } from "@/lib/client";
 
+export async function generateMetadata({ }) {
+    return {
+        title: "Doorbelss"
+    }
+}
+
+// import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 const GET_CATEGORIES = gql`
   query GetAllArticles {
   getAllArticles {
@@ -34,13 +42,18 @@ const GET_CATEGORIES = gql`
   }
 }
 `;
-const Category = ({ params }) => {
-    const { loading, error, data } = useQuery(GET_CATEGORIES);
+const Category = async ({ params }) => {
+    const client = getClient();
+    // const { data, loading, error } = await useSuspenseQuery(GET_CATEGORIES);
+    const { data } = await client.query({
+        query: GET_CATEGORIES
+    })
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+    // if (loading) return <p>Loading...</p>;
+    // if (error) return <p>Error: {error.message}</p>;
     return (
         <>
+
             <section className="pt-4">
                 <div className="container">
                     <div className="row">
